@@ -36,7 +36,8 @@
   --shadow:0 2px 4px rgba(15,27,51,.04), 0 12px 32px -18px rgba(15,27,51,.22);
   --shadow-lg:0 4px 8px rgba(15,27,51,.06), 0 28px 60px -30px rgba(15,27,51,.35);
 
-  --wrap:1200px;
+  --wrap:100%;
+  --gut:clamp(20px,3.5vw,72px);
   --r:4px;
 
   /* Type scale. Every display size is a token so the whole scale moves
@@ -93,7 +94,7 @@ a{color:var(--cyan-ink);text-decoration-thickness:1px;text-underline-offset:2px}
 
 :focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:2px}
 
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
 
 .skip{
   position:absolute;left:-9999px;top:0;z-index:200;
@@ -227,7 +228,7 @@ section{padding:clamp(56px,7vw,96px) 0}
 @media(min-width:1000px){
   .hero-grid{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:stretch}
 }
-.hero-copy{padding:clamp(44px,5.5vw,76px) clamp(20px,4vw,40px) clamp(48px,6vw,84px);display:flex;flex-direction:column;justify-content:center}
+.hero-copy{padding:clamp(44px,5.5vw,76px) var(--gut) clamp(48px,6vw,84px);display:flex;flex-direction:column;justify-content:center}
 
 .reg-tag{
   display:inline-flex;flex-wrap:wrap;align-items:center;gap:0;align-self:flex-start;max-width:100%;

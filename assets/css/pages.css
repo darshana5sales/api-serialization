@@ -45,7 +45,12 @@
 /* minmax(0,1fr), not 1fr: a plain 1fr track has min-width:auto and grows to
    fit the widest child, so the 620px reference tables pushed the page wide */
 .doc{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(32px,4vw,56px);align-items:start}
-@media(min-width:1000px){.doc{grid-template-columns:236px minmax(0,1fr)}}
+/* The page container is full-bleed, but long-form text still needs a
+   measure — left unbounded the prose hugs the left gutter and strands the
+   right half of a wide screen. Cap and centre the sidebar+prose block. */
+@media(min-width:1000px){
+  .doc{grid-template-columns:236px minmax(0,1fr);max-width:1280px;margin-inline:auto}
+}
 .toc{display:none}
 @media(min-width:1000px){.toc{display:block;position:sticky;top:98px}}
 .toc h2{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;padding-bottom:12px;border-bottom:1px solid var(--line)}
