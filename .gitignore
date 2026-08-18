@@ -1,0 +1,12 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+
+# Microsoft Office lock files
+~$*
+
+# Python
+__pycache__/
+*.pyc

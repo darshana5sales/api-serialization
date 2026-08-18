@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Utility pages carry noindex in the markup; excluded here as well.
+Disallow: /thank-you.html
+Disallow: /privacy.html
+Disallow: /_src/
+
+Sitemap: https://www.apiqr.in/sitemap.xml

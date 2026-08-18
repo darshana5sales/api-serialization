@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>API Serialization FAQ — QR Code Mandate Explained</title>
+<meta name="description" content="Twelve straight answers on API serialization in India — the QR mandate, what the code must carry, GTIN and SSCC standards, and implementation time.">
+<link rel="canonical" href="https://www.apiqr.in/faq.html">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="URL Aseptic Automation Inc.">
+<meta name="geo.region" content="IN-GJ">
+<meta name="geo.placename" content="Ahmedabad, Gujarat">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="APIQR by URL Aseptic Automation">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="https://www.apiqr.in/faq.html">
+<meta property="og:title" content="API Serialization FAQ">
+<meta property="og:description" content="Twelve straight answers on API serialization in India — the QR mandate, what the code must carry, GTIN and SSCC standards, and implementation time.">
+<meta property="og:image" content="https://www.apiqr.in/assets/img/apiqr-finallabel.png">
+<meta property="og:image:alt" content="A G.S.R. 20(E)-compliant API label showing GTIN, SSCC, batch number, dates and a QR code.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="API Serialization FAQ">
+<meta name="twitter:description" content="Twelve straight answers on API serialization in India — the QR mandate, what the code must carry, GTIN and SSCC standards, and implementation time.">
+<meta name="twitter:image" content="https://www.apiqr.in/assets/img/apiqr-finallabel.png">
+<meta name="theme-color" content="#1C3B7D">
+
+<link rel="icon" href="assets/img/favicon.ico" sizes="16x16 32x32 48x48 64x64">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<!-- per-page head extras (LCP preloads etc.) -->
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+
+<script>
+/* Opt in to scroll reveals only if this browser can actually run them.
+   Without this the .reveal rules stay inert and all content renders. */
+(function(){
+  try{
+    if ("IntersectionObserver" in window &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+      document.documentElement.className += " js-reveal";
+    }
+  }catch(e){}
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.apiqr.in/#org",
+      "name": "URL Aseptic Automation Inc.",
+      "alternateName": "APIQR",
+      "url": "https://www.apiqr.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.apiqr.in/assets/img/logo-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://www.apiqr.in/assets/img/logo-512.png",
+      "description": "Serialization, track-and-trace and end-of-line automation solutions for the pharmaceutical industry, with L1 to L5 capability and 12+ years of serialization experience.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "areaServed": "IN",
+      "knowsAbout": [
+        "API Serialization",
+        "G.S.R. 20(E)",
+        "GS1 Standards",
+        "SSCC",
+        "GTIN",
+        "Pharmaceutical Track and Trace"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.apiqr.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Resources",
+          "item": "https://www.apiqr.in/resources.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "FAQ",
+          "item": "https://www.apiqr.in/faq.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.apiqr.in/faq.html#faq",
+      "inLanguage": "en-IN",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an API?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An Active Pharmaceutical Ingredient is the active component of a formulation such as a tablet, capsule, cream or injectable — in short, the raw material used to manufacture medicines. In Indian industry usage it is also referred to as a bulk drug."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is API serialization?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Serialization is the process of giving a product a unique identity through a standard set of details such as GTIN, SSCC, SKU, batch number and manufacturing and expiry dates, which makes it uniquely identifiable and traceable through the supply chain. API serialization applies that to Active Pharmaceutical Ingredients so a pack can be tracked and traced to its location, or to where it has been."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a QR code mandatory on API labels in India?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Under guideline G.S.R. 20(E), notified by the Ministry of Health and Family Welfare on 18 January 2022 under gazette number CG-DL-E-19012022-232768 and in force since 1 January 2023, every API manufactured or imported in India must carry a QR code on its label at each packaging level."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What information must the QR code on an API pack contain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Eleven particulars: unique product identification code, name of the API, brand name if any, name and address of the manufacturer, batch number, batch size, date of manufacturing, date of expiry or retesting, serial shipping container code, manufacturing or import licence number, and any special storage conditions required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the QR code go on every packaging level?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The guideline requires a QR code on the label at each packaging level — primary, secondary and tertiary. Each is a distinct physical unit that can be separated from the others, so each needs its own identity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the need for API serialization?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Drug counterfeiting is a global problem, and gaps in an unserialized supply chain are where fake or low-quality material enters. Serialization guarantees API quality and safety, gives complete supply chain visibility, allows the source of a problem to be identified quickly, and helps every member of the chain with inventory management, verification and recall."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does implementation take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typically four to five working days from kick-off to the first compliant printed label. APIQR is cloud-based, so there is nothing to procure and no change to the packing line."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is APIQR cloud-based or installed on site?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fully cloud-based. You log in through a standard web browser using your company code, username and password and operate it from any location. There are no on-premise servers and no heavy IT setup."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after a batch is approved?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Once approved, serialized SSCC codes are generated automatically — typically within five to ten minutes — after which the labels become available for printing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can approved batches be edited later?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Once a batch is approved it is locked from further edits, which preserves data integrity and is a key requirement for regulatory audits. If something is wrong the batch is rejected or cancelled with a recorded reason instead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does APIQR support GTIN and NDC standards?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The platform supports GS1-compliant GTIN generation as well as NDC fields for products sold into the United States, and manages SSCC ranges centrally so serials never collide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who can approve or print a batch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only authorised users. APIQR includes granular role-based user management with Administrator, Supervisor and Operator roles, and rights can be defined per user or cloned from an existing template. Reprints require the authorised user to log in again."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="status"><span class="dot" aria-hidden="true"></span> G.S.R. 20(E) is in force — QR codes are mandatory on every API pack</span>
+    <span class="topbar-links">
+      <a href="tel:+919099000000">+91 90990 00000</a>
+      <a href="mailto:sales@apiqr.in">sales@apiqr.in</a>
+      <a href="https://login.apiqr.in" rel="noopener">Customer login</a>
+    </span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="APIQR home">
+      <img class="brand-mark" src="assets/img/logo.png" alt=""
+           width="110" height="110" decoding="async">
+      <span class="brand-text">
+        <span class="brand-name">APIQR</span>
+        <span class="brand-sub">by URL Aseptic</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="why-api-serialization.html">Why Serialization</a>
+      <a href="gsr-20e-api-qr-code.html">The Regulation</a>
+      <a href="api-serialization-software.html">The Platform</a>
+      <a href="resources.html" aria-current="page">Resources</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <div class="header-cta">
+      <a class="btn btn-primary" href="contact.html">Book a free demo</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobile-nav">
+  <ul>
+    <li><a href="why-api-serialization.html">Why Serialization</a></li>
+    <li><a href="gsr-20e-api-qr-code.html">The Regulation</a></li>
+    <li><a href="api-serialization-software.html">The Platform</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="https://login.apiqr.in" rel="noopener">Customer login</a></li>
+  </ul>
+</div>
+
+<main id="main">
+<section class="page-head page-head-light">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><span aria-current="page">FAQ</span></li>
+      </ol>
+    </nav>
+    <p class="eyebrow" style="margin-top:22px">Frequently asked questions</p>
+    <h1>API serialization, answered plainly</h1>
+    <p class="lede">
+      The twelve questions we are asked most often by API manufacturers, quality heads and
+      regulatory affairs teams — answered without the sales language.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+
+    <h2 class="sec-title reveal" style="margin-bottom:8px">Common questions</h2>
+    <p class="sec-intro reveal" style="margin-bottom:34px">If yours is not covered here, <a href="contact.html">ask us directly</a> — a specialist replies within one working day.</p>
+
+    <div class="faq reveal" style="margin-top:0">
+
+      <details open>
+        <summary>What is an API?</summary>
+        <div class="faq-a">
+          <p>An <strong>Active Pharmaceutical Ingredient</strong> is the active component of a formulation product — a tablet, capsule, cream or injectable. In short, it is the raw material used to manufacture medicines.</p>
+          <p>In Indian industry usage it is also called a <strong>bulk drug</strong>. The two terms mean the same thing, and the QR code guideline applies to both names equally.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What is API serialization?</summary>
+        <div class="faq-a">
+          <p>Start with serialization itself: it is the process of giving a product a unique identity through a standard set of details — GTIN, SSCC, SKU, product ingredients, batch number, manufacturing and expiry dates — which together make it uniquely identifiable and easily traceable through the supply chain.</p>
+          <p><strong>API serialization</strong> applies that to an API or bulk drug, so it can be tracked and traced through the chain: where it is now, and where it has been.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Is it compulsory to have a QR code on an API pack in India?</summary>
+        <div class="faq-a">
+          <p>Yes. The Government of India has made it compulsory for every API pack manufactured or imported in India to carry a QR code, as per the gazette published by the Ministry of Health and Family Welfare on <strong>18 January 2022</strong> under number <span class="mono">CG-DL-E-19012022-232768</span>. Guideline <strong>G.S.R. 20(E)</strong> came into force on 1 January 2023.</p>
+          <p>The full notification is available on the <a href="resources.html">resources page</a>, free and without a form.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What information must the QR code contain?</summary>
+        <div class="faq-a">
+          <p>Eleven particulars: unique product identification code, name of the API, brand name if any, name and address of the manufacturer, batch number, batch size, date of manufacturing, date of expiry or retesting, serial shipping container code, manufacturing or import licence number, and any special storage conditions required.</p>
+          <p><a href="gsr-20e-api-qr-code.html#fields">See each field explained in practice →</a></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Does the QR code go on every packaging level?</summary>
+        <div class="faq-a">
+          <p>Yes. The guideline requires a QR code on the label at <strong>each packaging level</strong> — primary, secondary and tertiary. Each is a distinct physical unit that can be separated from the others, so each needs its own identity.</p>
+          <p>Labelling only the outer shipper is one of the most common gaps we find when reviewing existing labels.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How does this benefit API manufacturers, beyond avoiding penalties?</summary>
+        <div class="faq-a">
+          <p>At present the API industry has no standard set of rules for track and trace and remains largely unorganised, which means no supply chain visibility and a large information gap — precisely what invites counterfeiters into the market. Counterfeiting is a global problem that ends up affecting public health and reducing trust in the healthcare system.</p>
+          <p>Serialization guarantees API quality and safety, and gives you complete supply chain visibility, so the source of a problem can be identified quickly and contained. Downstream, it helps every member of the chain with inventory management, verification, recalls and reduced supply delays.</p>
+          <p><a href="why-api-serialization.html">Read the full case for traceability →</a></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How quickly can we be compliant?</summary>
+        <div class="faq-a">
+          <p>Typically <strong>four to five working days</strong> from kick-off to your first compliant printed label. APIQR is a cloud application, so there is nothing to procure and nothing to change on the packing line — the time goes on setting up your product masters and label templates, not on building software.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Is it cloud-based, or does it install on our servers?</summary>
+        <div class="faq-a">
+          <p>Fully cloud-based. Your team logs in through a standard web browser with a company code, username and password, and can work from the plant, the office or anywhere else with a connection. No on-premise servers, no heavy IT setup.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What happens after a batch is approved?</summary>
+        <div class="faq-a">
+          <p>Serialized SSCC codes are generated automatically, typically within five to ten minutes of approval. Once they exist, the labels appear under Print Pending and become available for printing.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Can an approved batch be edited afterwards?</summary>
+        <div class="faq-a">
+          <p>No — and that is deliberate. Once a batch is approved it locks, which preserves data integrity and is a key requirement for regulatory audits. If something is wrong, the batch is rejected or cancelled with a recorded reason rather than quietly amended.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Does the software support GTIN and NDC standards?</summary>
+        <div class="faq-a">
+          <p>Yes. APIQR supports GS1-compliant GTIN generation as well as NDC (National Drug Code) fields for products sold into the United States market. SSCC number ranges are managed centrally through Core Config, so serials never collide across products or sites.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Who can approve or print a batch?</summary>
+        <div class="faq-a">
+          <p>Only the people you authorise. APIQR includes granular role-based user management with Administrator, Supervisor and Operator roles, and rights can be set per user or cloned from an existing template.</p>
+          <p>Reprints require the authorised user to log in again, which is what protects against unauthorised label duplication.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <h2 class="sec-title reveal" style="margin-top:64px">Keep reading</h2>
+
+    <div class="related">
+      <a class="rel" href="gsr-20e-api-qr-code.html">
+        <span class="k">Reference</span>
+        <h3>The regulation in full</h3>
+        <p>All eleven mandatory fields, packaging levels, and an eight-point compliance self-check.</p>
+        <span class="go">Read the regulation
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+      <a class="rel" href="api-serialization-software.html">
+        <span class="k">The platform</span>
+        <h3>How APIQR works</h3>
+        <p>Nine modules, six steps, and real screens from the running application.</p>
+        <span class="go">See the platform
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+      <a class="rel" href="contact.html">
+        <span class="k">Talk to us</span>
+        <h3>Ask us directly</h3>
+        <p>If your question is not here, a specialist will answer it within one working day.</p>
+        <span class="go">Get in touch
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="APIQR home">
+          <img class="brand-mark" src="assets/img/logo.png" alt=""
+               width="110" height="110" decoding="async" loading="lazy">
+          <span class="brand-text">
+            <span class="brand-name">APIQR</span>
+            <span class="brand-sub">by URL Aseptic Automation</span>
+          </span>
+        </a>
+        <p>
+          Cloud-based API and bulk drug serialization built for G.S.R. 20(E) — from a team
+          that has been doing pharmaceutical track and trace for over twelve years.
+        </p>
+        <div class="socials">
+          <a href="#" aria-label="LinkedIn" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 8.98h4v12H3v-12zM9.5 8.98h3.8v1.64h.06c.53-.95 1.83-1.96 3.76-1.96 4.02 0 4.76 2.5 4.76 5.76v6.56h-4v-5.82c0-1.39-.03-3.17-1.98-3.17-1.98 0-2.29 1.51-2.29 3.07v5.92h-4v-12z"/></svg></a>
+          <a href="#" aria-label="YouTube" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.4-.43-5.03a2.6 2.6 0 00-1.84-1.85C19.1 4.7 12 4.7 12 4.7s-7.1 0-8.73.42a2.6 2.6 0 00-1.84 1.85C1 8.6 1 12 1 12s0 3.4.43 5.03c.24.9.94 1.6 1.84 1.85 1.63.42 8.73.42 8.73.42s7.1 0 8.73-.42a2.6 2.6 0 001.84-1.85C23 15.4 23 12 23 12zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></a>
+          <a href="mailto:sales@apiqr.in" aria-label="Email"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="foot-h">Compliance</h2>
+        <ul>
+          <li><a href="gsr-20e-api-qr-code.html">G.S.R. 20(E) explained</a></li>
+          <li><a href="gsr-20e-api-qr-code.html#fields">The 11 mandatory fields</a></li>
+          <li><a href="gsr-20e-api-qr-code.html#checklist">Compliance self-check</a></li>
+          <li><a href="resources.html">Download the gazette</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="foot-h">Platform</h2>
+        <ul>
+          <li><a href="api-serialization-software.html">API serialization software</a></li>
+          <li><a href="api-serialization-software.html#how">How it works</a></li>
+          <li><a href="why-api-serialization.html">Why serialization matters</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="foot-h">Talk to us</h2>
+        <ul class="foot-contact">
+          <li>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>URL Aseptic Automation Inc.<br>Ahmedabad, Gujarat, India</span>
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.8a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.7.7a2 2 0 011.8 2.1z"/></svg>
+            <a href="tel:+919099000000">+91 90990 00000</a>
+          </li>
+          <li>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>
+            <a href="mailto:sales@apiqr.in">sales@apiqr.in</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span id="yr">2026</span> URL Aseptic Automation Inc. All rights reserved.</span>
+      <span class="mono">G.S.R. 20(E) · CG-DL-E-19012022-232768</span>
+      <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="contact.html">Contact</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
