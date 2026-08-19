@@ -272,6 +272,11 @@ section{padding:clamp(64px,8vw,132px) 0}
   letter-spacing:.17em;line-height:1.4;text-transform:uppercase;
   color:var(--cyan-ink);margin-bottom:15px;
 }
+/* Below 1000px the copy column is narrow enough that the promise reads
+   better on two lines; above it the forced break left the highlight at
+   roughly half the column width with a large void beside it. */
+@media(min-width:1000px){.hero h1 .br-narrow{display:none}}
+
 /* marker highlight that wraps with the text instead of forcing one line */
 .hero h1 .hl{
   color:var(--blue);
@@ -281,7 +286,7 @@ section{padding:clamp(64px,8vw,132px) 0}
   padding:0 .05em;
 }
 
-.hero-lede{font-size:clamp(17px,1.65vw,19.5px);margin-top:28px;max-width:56ch}
+.hero-lede{font-size:clamp(17px,1.65vw,19.5px);margin-top:28px;max-width:68ch}
 .hero-lede strong{color:var(--ink);font-weight:600}
 
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
@@ -312,7 +317,7 @@ section{padding:clamp(64px,8vw,132px) 0}
 /* who is behind the product — the line that answers whether these people
    have done this before */
 .hero-vendor{
-  display:flex;gap:11px;align-items:flex-start;max-width:58ch;
+  display:flex;gap:11px;align-items:flex-start;max-width:68ch;
   margin-top:26px;padding-top:24px;border-top:1px solid var(--line);
   font-size:14.5px;line-height:1.65;color:var(--muted);
 }
