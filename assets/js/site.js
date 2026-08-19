@@ -15,16 +15,40 @@
   var toggle = document.querySelector(".nav-toggle");
   var mnav = document.getElementById("mobile-nav");
   if (toggle && mnav) {
-    toggle.addEventListener("click", function () {
-      var open = mnav.classList.toggle("open");
+    var setNav = function (open) {
+      mnav.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", String(open));
+    };
+
+    toggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setNav(!mnav.classList.contains("open"));
     });
+
+    /* a tap inside the panel that is not a link keeps it open */
     mnav.addEventListener("click", function (e) {
-      if (e.target.tagName === "A") {
-        mnav.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
+      if (e.target.closest("a")) setNav(false);
+      else e.stopPropagation();
+    });
+
+    /* anywhere else on the page dismisses it */
+    document.addEventListener("click", function () {
+      if (mnav.classList.contains("open")) setNav(false);
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && mnav.classList.contains("open")) {
+        setNav(false);
+        toggle.focus();
       }
     });
+
+    /* the panel is only reachable below 1040px; leaving it open past that
+       breakpoint would hide it while aria-expanded still claimed it was open */
+    var wide = window.matchMedia("(min-width: 1041px)");
+    var onWide = function (m) { if (m.matches) setNav(false); };
+    if (wide.addEventListener) wide.addEventListener("change", onWide);
+    else if (wide.addListener) wide.addListener(onWide);
   }
 
   /* ---------- platform screenshot tabs ---------- */

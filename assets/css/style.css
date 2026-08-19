@@ -189,7 +189,19 @@ section{padding:clamp(56px,7vw,96px) 0}
   width:44px;height:44px;cursor:pointer;color:var(--blue);
 }
 @media(max-width:1040px){.nav-toggle{display:grid;place-items:center}}
-.mobile-nav{display:none;border-bottom:1px solid var(--line);background:var(--surface)}
+/* The panel lives inside the sticky header and hangs off its bottom edge, so
+   it opens fully in view at any scroll position. As a sibling in normal flow
+   it stayed anchored near the top of the document, and opening it part-way
+   down a page put its first items off-screen above the sticky bar.
+   position:absolute (not fixed) is deliberate: the header sets backdrop-filter,
+   which makes it the containing block for fixed descendants anyway. */
+.mobile-nav{
+  display:none;position:absolute;top:100%;left:0;right:0;
+  background:var(--surface);border-bottom:1px solid var(--line);
+  box-shadow:var(--shadow-lg);
+  max-height:calc(100vh - 74px);overflow-y:auto;
+  overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+}
 .mobile-nav.open{display:block}
 .mobile-nav ul{list-style:none;margin:0;padding:8px 0 16px}
 .mobile-nav a{
