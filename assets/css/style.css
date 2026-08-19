@@ -265,17 +265,15 @@ section{padding:clamp(64px,8vw,132px) 0}
   text-wrap:initial;
   overflow-wrap:break-word;
 }
-/* keyword kicker — carries the head term at the top of the H1 without
-   taking visual weight away from the promise underneath it */
-.hero h1 .h1-kick{
-  display:block;font-family:var(--f-mono);font-size:11.5px;font-weight:600;
-  letter-spacing:.17em;line-height:1.4;text-transform:uppercase;
-  color:var(--cyan-ink);margin-bottom:15px;
-}
 /* Below 1000px the copy column is narrow enough that the promise reads
    better on two lines; above it the forced break left the highlight at
-   roughly half the column width with a large void beside it. */
+   roughly half the column width with a large void beside it.
+   Keeping the closing phrase unbreakable means that when the line does
+   not fit it falls back to exactly that two-line form, instead of
+   orphaning the last word. text-wrap:balance does not do this reliably
+   across a hard <br>. */
 @media(min-width:1000px){.hero h1 .br-narrow{display:none}}
+.hero h1 .nb{white-space:nowrap}
 
 /* marker highlight that wraps with the text instead of forcing one line */
 .hero h1 .hl{
@@ -299,16 +297,20 @@ section{padding:clamp(64px,8vw,132px) 0}
 .hero-assure span{display:flex;align-items:center;gap:7px}
 .hero-assure svg{color:var(--cyan);flex:none}
 
-.hero-proof{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:52px;
-  border-top:1px solid var(--line);
+/* ---------- proof band, directly under the hero ----------
+   These were inside the hero. On a 1280px laptop that put twelve separate
+   blocks in one screen, which reads as dumped rather than designed. */
+.proof{background:var(--ground-alt);border-bottom:1px solid var(--line);padding:clamp(40px,4.4vw,64px) 0}
+.proof-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:0;
 }
-@media(min-width:560px){.hero-proof{grid-template-columns:repeat(4,1fr)}}
-.hp{padding:22px 20px 8px 0;border-right:1px solid var(--line)}
+@media(min-width:560px){.proof-grid{grid-template-columns:repeat(4,1fr)}}
+.hp{padding:0 24px 0 0;border-right:1px solid var(--line)}
 .hp:last-child{border-right:0}
 @media(max-width:559px){
   .hp:nth-child(2n){border-right:0}
-  .hp:nth-child(-n+2){border-bottom:1px solid var(--line);padding-bottom:14px}
+  .hp:nth-child(-n+2){border-bottom:1px solid var(--line);padding-bottom:20px}
+  .hp:nth-child(n+3){padding-top:20px}
 }
 .hp b{display:block;font-family:var(--f-display);font-size:var(--fs-hp);color:var(--blue);font-weight:700;letter-spacing:-.02em}
 .hp b span{font-size:inherit;letter-spacing:inherit}
@@ -316,15 +318,15 @@ section{padding:clamp(64px,8vw,132px) 0}
 
 /* who is behind the product — the line that answers whether these people
    have done this before */
-.hero-vendor{
-  display:flex;gap:11px;align-items:flex-start;max-width:68ch;
-  margin-top:26px;padding-top:24px;border-top:1px solid var(--line);
+.proof-note{
+  display:flex;gap:11px;align-items:flex-start;max-width:96ch;
+  margin-top:30px;padding-top:26px;border-top:1px solid var(--line);
   font-size:14.5px;line-height:1.65;color:var(--muted);
 }
-.hero-vendor svg{color:var(--cyan);flex:none;margin-top:3px}
-.hero-vendor strong{color:var(--body);font-weight:600}
-.hero-vendor a{color:var(--cyan-ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--cyan-line)}
-.hero-vendor a:hover{border-bottom-color:var(--cyan-ink)}
+.proof-note svg{color:var(--cyan);flex:none;margin-top:3px}
+.proof-note strong{color:var(--body);font-weight:600}
+.proof-note a{color:var(--cyan-ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--cyan-line)}
+.proof-note a:hover{border-bottom-color:var(--cyan-ink)}
 
 /* --- the label stage --- */
 .hero-stage{
@@ -401,25 +403,6 @@ section{padding:clamp(64px,8vw,132px) 0}
 .label-cap .ok{color:var(--yellow);display:flex;align-items:center;gap:7px}
 .label-cap .ok svg{flex:none}
 
-/* a readout of what is actually inside the code on the label above */
-.stage-decode{
-  margin-top:22px;padding:15px 17px;border-radius:var(--r);
-  border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.16);
-}
-.stage-decode .sd-h{
-  font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.16em;
-  text-transform:uppercase;color:#fff;
-}
-.stage-decode dl{margin:12px 0 0;display:grid;gap:8px}
-.stage-decode dl > div{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;justify-content:space-between}
-.stage-decode dt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#9FC9E8}
-.stage-decode dd{margin:0;font-family:var(--f-mono);font-size:12.5px;color:#fff;letter-spacing:.02em}
-.stage-decode .sd-f{
-  margin-top:13px;padding-top:12px;border-top:1px solid rgba(255,255,255,.14);
-  font-size:13px;line-height:1.5;color:#9FC9E8;
-}
-.stage-decode .sd-f a{color:#CDEBFB;text-decoration:underline;text-underline-offset:3px}
-.stage-decode .sd-f a:hover{color:var(--yellow)}
 
 /* ==========================================================================
    MARQUEE / CREDENTIAL STRIP
@@ -808,24 +791,18 @@ html.js-reveal .reveal.in{
   .hero-copy{padding-top:clamp(26px,3vw,40px);padding-bottom:clamp(30px,3.4vw,46px)}
   /* at these sizes the first sentence lands just over one line and drops a
      one-word orphan, so let the browser balance the wrap instead */
-  .hero h1{margin-top:17px;text-wrap:balance}
-  .hero h1 .h1-kick{font-size:11px;margin-bottom:10px}
-  .hero-lede{font-size:16.5px;margin-top:15px;max-width:58ch}
+  .hero h1{margin-top:28px;text-wrap:balance}
+  .hero-lede{font-size:16.5px;margin-top:18px;max-width:68ch}
   .hero-actions{margin-top:22px}
   .hero-actions .btn-lg{padding:13px 24px;font-size:16px}
   .hero-assure{margin-top:14px;font-size:13.5px}
-  .hero-proof{margin-top:26px}
-  .hp{padding:14px 16px 4px 0}
-  .hero-vendor{margin-top:16px;padding-top:14px;font-size:13.5px}
 
   .hero-stage{padding:clamp(26px,3vw,44px) clamp(20px,2.8vw,44px)}
   .stage-bar{margin-bottom:16px;padding-bottom:11px}
   .label-cap{margin-top:15px}
-  .stage-decode{margin-top:16px;padding:13px 15px}
-  .stage-decode dl{margin-top:10px;gap:6px}
-  .stage-decode .sd-f{margin-top:11px;padding-top:10px}
 
   .creds{padding:16px 0}
+  .proof{padding:40px 0}
 }
 
 /* 1280×720 and shorter — squeeze harder */
@@ -845,16 +822,11 @@ html.js-reveal .reveal.in{
 
   section{padding:clamp(40px,4.6vw,62px) 0}
 
-  .hero-copy{padding-top:24px;padding-bottom:28px}
-  .hero h1{margin-top:14px}
-  .hero h1 .h1-kick{margin-bottom:9px}
-  .hero-lede{font-size:16px;margin-top:13px}
-  .hero-actions{margin-top:19px}
+  .hero-copy{padding-top:28px;padding-bottom:32px}
+  .hero h1{margin-top:24px}
+  .hero-lede{font-size:16px;margin-top:16px}
+  .hero-actions{margin-top:23px}
   .hero-assure{margin-top:12px}
-  .hero-proof{margin-top:20px}
-  .hp{padding:12px 14px 4px 0}
-  .hero-vendor{margin-top:13px;padding-top:12px}
 
   .hero-stage{padding:24px clamp(20px,2.6vw,38px)}
-  .stage-decode{margin-top:14px}
 }
