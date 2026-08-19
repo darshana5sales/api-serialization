@@ -36,8 +36,11 @@
   --shadow:0 2px 4px rgba(15,27,51,.04), 0 12px 32px -18px rgba(15,27,51,.22);
   --shadow-lg:0 4px 8px rgba(15,27,51,.06), 0 28px 60px -30px rgba(15,27,51,.35);
 
-  --wrap:100%;
-  --gut:clamp(20px,3.5vw,72px);
+  /* Bands stay full-bleed; the content inside them is wide but not edge to
+     edge. A bare 100% with a small gutter reads as cramped on a large
+     monitor — the margin has to grow with the screen. */
+  --wrap:min(100%,1680px);
+  --gut:clamp(24px,4vw,96px);
   --r:4px;
 
   /* Type scale. Every display size is a token so the whole scale moves
@@ -73,7 +76,7 @@ body{
   color:var(--body);
   font-family:var(--f-body);
   font-size:17px;
-  line-height:1.65;
+  line-height:1.7;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
@@ -112,9 +115,9 @@ a{color:var(--cyan-ink);text-decoration-thickness:1px;text-underline-offset:2px}
 .eyebrow-plain::before{display:none}
 
 .sec-title{font-size:var(--fs-h2)}
-.sec-intro{max-width:60ch;font-size:clamp(17px,1.5vw,19px);margin-top:16px}
+.sec-intro{max-width:62ch;font-size:clamp(17px,1.5vw,19px);margin-top:20px}
 
-section{padding:clamp(56px,7vw,96px) 0}
+section{padding:clamp(64px,8vw,132px) 0}
 .sec-alt{background:var(--ground-alt);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
 
 /* ---------- buttons ---------- */
@@ -240,7 +243,7 @@ section{padding:clamp(56px,7vw,96px) 0}
 @media(min-width:1000px){
   .hero-grid{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:stretch}
 }
-.hero-copy{padding:clamp(44px,5.5vw,76px) var(--gut) clamp(48px,6vw,84px);display:flex;flex-direction:column;justify-content:center}
+.hero-copy{padding:clamp(52px,6.5vw,104px) var(--gut) clamp(56px,7vw,112px);display:flex;flex-direction:column;justify-content:center}
 
 .reg-tag{
   display:inline-flex;flex-wrap:wrap;align-items:center;gap:0;align-self:flex-start;max-width:100%;
@@ -257,7 +260,7 @@ section{padding:clamp(56px,7vw,96px) 0}
 
 .hero h1{
   font-size:var(--fs-hero-h1);
-  letter-spacing:-.03em;line-height:1.08;margin-top:26px;
+  letter-spacing:-.03em;line-height:1.08;margin-top:32px;
   /* an explicit <br> already sets the break; balance fights it */
   text-wrap:initial;
   overflow-wrap:break-word;
@@ -278,25 +281,25 @@ section{padding:clamp(56px,7vw,96px) 0}
   padding:0 .05em;
 }
 
-.hero-lede{font-size:clamp(17px,1.65vw,19.5px);margin-top:22px;max-width:54ch}
+.hero-lede{font-size:clamp(17px,1.65vw,19.5px);margin-top:28px;max-width:56ch}
 .hero-lede strong{color:var(--ink);font-weight:600}
 
-.hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:32px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
 .hero-actions .btn-primary{box-shadow:0 14px 30px -16px rgba(28,59,125,.75)}
 .hero-actions .btn-primary:hover{transform:translateY(-1px)}
 .hero-assure{
-  display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:18px;
+  display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:24px;
   font-size:14px;color:var(--muted);
 }
 .hero-assure span{display:flex;align-items:center;gap:7px}
 .hero-assure svg{color:var(--cyan);flex:none}
 
 .hero-proof{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:40px;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:52px;
   border-top:1px solid var(--line);
 }
 @media(min-width:560px){.hero-proof{grid-template-columns:repeat(4,1fr)}}
-.hp{padding:18px 18px 4px 0;border-right:1px solid var(--line)}
+.hp{padding:22px 20px 8px 0;border-right:1px solid var(--line)}
 .hp:last-child{border-right:0}
 @media(max-width:559px){
   .hp:nth-child(2n){border-right:0}
@@ -310,8 +313,8 @@ section{padding:clamp(56px,7vw,96px) 0}
    have done this before */
 .hero-vendor{
   display:flex;gap:11px;align-items:flex-start;max-width:58ch;
-  margin-top:20px;padding-top:18px;border-top:1px solid var(--line);
-  font-size:14.5px;line-height:1.6;color:var(--muted);
+  margin-top:26px;padding-top:24px;border-top:1px solid var(--line);
+  font-size:14.5px;line-height:1.65;color:var(--muted);
 }
 .hero-vendor svg{color:var(--cyan);flex:none;margin-top:3px}
 .hero-vendor strong{color:var(--body);font-weight:600}
@@ -321,7 +324,7 @@ section{padding:clamp(56px,7vw,96px) 0}
 /* --- the label stage --- */
 .hero-stage{
   background:var(--blue);position:relative;display:flex;align-items:center;justify-content:center;
-  padding:clamp(38px,4.5vw,64px) clamp(24px,3.5vw,52px);
+  padding:clamp(44px,5vw,84px) clamp(28px,4vw,76px);
 }
 /* fine measurement grid, the way a prepress proof sheet reads */
 .hero-stage::after{
@@ -416,7 +419,7 @@ section{padding:clamp(56px,7vw,96px) 0}
 /* ==========================================================================
    MARQUEE / CREDENTIAL STRIP
    ========================================================================== */
-.creds{background:var(--ground-alt);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line);padding:22px 0}
+.creds{background:var(--ground-alt);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line);padding:28px 0}
 .creds .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:14px clamp(20px,3.5vw,46px);justify-content:center}
 .creds .lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .cred{
@@ -431,11 +434,11 @@ section{padding:clamp(56px,7vw,96px) 0}
 .mandate-top{display:grid;grid-template-columns:1fr;gap:26px;align-items:end}
 @media(min-width:900px){.mandate-top{grid-template-columns:minmax(0,1fr) auto;gap:48px}}
 
-.risk-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:44px}
+.risk-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:52px}
 @media(min-width:760px){.risk-grid{grid-template-columns:repeat(3,1fr)}}
 .risk{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
-  padding:26px 24px;display:flex;flex-direction:column;gap:11px;
+  padding:32px 30px;display:flex;flex-direction:column;gap:13px;
   box-shadow:var(--shadow-sm);position:relative;overflow:hidden;
 }
 .risk::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--cyan)}
@@ -448,7 +451,7 @@ section{padding:clamp(56px,7vw,96px) 0}
 
 /* the 11 fields */
 .fields{
-  margin-top:44px;background:var(--surface);border:1px solid var(--line);
+  margin-top:52px;background:var(--surface);border:1px solid var(--line);
   border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);
 }
 .fields-head{
@@ -464,7 +467,7 @@ section{padding:clamp(56px,7vw,96px) 0}
 @media(min-width:640px){.fields-list{grid-template-columns:1fr 1fr}}
 @media(min-width:1000px){.fields-list{grid-template-columns:1fr 1fr 1fr}}
 .fld{
-  display:flex;gap:13px;padding:15px 22px;border-bottom:1px solid var(--line-soft);
+  display:flex;gap:13px;padding:19px 24px;border-bottom:1px solid var(--line-soft);
   border-right:1px solid var(--line-soft);align-items:flex-start;
 }
 .fld-n{
@@ -621,7 +624,7 @@ body.lb-open{overflow:hidden}
 /* ==========================================================================
    MODULES
    ========================================================================== */
-.modules{display:grid;grid-template-columns:1fr;gap:1px;margin-top:40px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.modules{display:grid;grid-template-columns:1fr;gap:1px;margin-top:48px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
 @media(min-width:680px){.modules{grid-template-columns:1fr 1fr}}
 @media(min-width:1000px){.modules{grid-template-columns:1fr 1fr 1fr}}
 .mod{background:var(--surface);padding:24px 22px;display:flex;flex-direction:column;gap:8px;transition:background-color .16s ease}
@@ -647,10 +650,10 @@ body.lb-open{overflow:hidden}
 .why .eyebrow{color:var(--yellow)}
 .why .eyebrow::before{background:var(--yellow)}
 .why .sec-intro{color:#B9CAE6}
-.why-grid{display:grid;grid-template-columns:1fr;gap:1px;margin-top:44px;background:rgba(255,255,255,.14)}
+.why-grid{display:grid;grid-template-columns:1fr;gap:1px;margin-top:52px;background:rgba(255,255,255,.14)}
 @media(min-width:700px){.why-grid{grid-template-columns:1fr 1fr}}
 @media(min-width:1050px){.why-grid{grid-template-columns:repeat(3,1fr)}}
-.wc{background:var(--blue);padding:28px 26px;display:flex;flex-direction:column;gap:10px}
+.wc{background:var(--blue);padding:34px 32px;display:flex;flex-direction:column;gap:12px}
 .wc-n{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--cyan);font-weight:600}
 .wc h3{color:#fff;font-size:18px}
 .wc p{font-size:15px;color:#B9CAE6}
