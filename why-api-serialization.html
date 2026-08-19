@@ -206,30 +206,30 @@
   </div>
 </section>
 
-<section>
+<div class="jump">
   <div class="wrap">
-    <div class="doc">
+    <span class="jl">On this page</span>
+    <a href="#what">What it is</a>
+    <a href="#carries">What the code carries</a>
+    <a href="#why">Why it matters</a>
+    <a href="#cost">The cost of waiting</a>
+    <a href="#who">Who it applies to</a>
+  </div>
+</div>
 
-      <nav class="toc" aria-label="On this page">
-        <h2>On this page</h2>
-        <ol>
-          <li><a href="#what">What API serialization is</a></li>
-          <li><a href="#carries">What a serialization code carries</a></li>
-          <li><a href="#why">Four reasons it matters</a></li>
-          <li><a href="#cost">The cost of staying unserialized</a></li>
-          <li><a href="#who">Who this applies to</a></li>
-          <li><a href="#next">What to do next</a></li>
-        </ol>
-      </nav>
+<!-- ============================ WHAT IT IS ============================ -->
+<section id="what" aria-labelledby="what-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">The definition</p>
+    <h2 class="sec-title reveal" id="what-h">What API serialization is</h2>
+    <p class="sec-intro reveal">
+      Serialization is the practice of giving a product a unique identity — a set of standard
+      details that make one pack distinguishable from every other pack, and traceable through
+      the supply chain.
+    </p>
 
-      <div class="prose-long">
-
-        <h2 id="what">What API serialization is</h2>
-        <p class="lead-para">
-          Serialization is the practice of giving a product a unique identity — a set of
-          standard details that make one pack distinguishable from every other pack, and
-          traceable through the supply chain.
-        </p>
+    <div class="split reveal">
+      <div class="split-body">
         <p>
           <strong>API serialization</strong> applies that idea to Active Pharmaceutical
           Ingredients — bulk drugs, the raw material from which tablets, capsules, creams and
@@ -243,7 +243,9 @@
           description, the stock-keeping unit, the batch or lot number, the expiry date, the
           date of production, and the line and plant it was manufactured on.
         </p>
+      </div>
 
+      <div class="split-aside">
         <div class="note-box">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
           <span>
@@ -253,117 +255,232 @@
             Indian industry usage it is more often called bulk drug.
           </span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <h2 id="carries">What a serialization code carries</h2>
+<!-- ============================ WHAT THE CODE CARRIES ============================ -->
+<section id="carries" class="sec-alt" aria-labelledby="carries-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">Inside the code</p>
+    <h2 class="sec-title reveal" id="carries-h">What a serialization code carries</h2>
+    <p class="sec-intro reveal">
+      Under India's G.S.R. 20(E) guideline the QR code on an API pack must carry eleven
+      specific particulars — from the unique product identification code through to any
+      special storage conditions. Three layers of identity sit underneath them.
+    </p>
+
+    <div class="pkg reveal">
+      <article class="pkg-c">
+        <span class="pkg-k">Layer 01 · Product</span>
+        <h3>What the material is</h3>
         <p>
-          Under India's G.S.R. 20(E) guideline the QR code on an API pack must carry eleven
-          specific particulars — from the unique product identification code through to any
-          special storage conditions. Those are set out in full, with what each one means in
-          practice, on the regulation page.
+          The GTIN, the approved product name, the brand name where one exists, and the
+          manufacturer's registered name and address. Held once against the product, applied
+          to every batch of it.
         </p>
+      </article>
+      <article class="pkg-c">
+        <span class="pkg-k">Layer 02 · Batch</span>
+        <h3>Which production run it came from</h3>
         <p>
-          The important structural point is the <strong>Serial Shipping Container Code</strong>
-          (SSCC). It is issued to GS1 international standards and is unique to each individual
-          container, not to the batch. A fifty-drum batch produces fifty distinct SSCCs. That is
-          what makes traceability granular enough to be useful — you can isolate one drum, not
-          just one batch.
+          Batch number and size, date of manufacture, and date of expiry or retest. This is
+          the layer most manufacturers already hold — it is the one that recall notices are
+          written against.
+        </p>
+      </article>
+      <article class="pkg-c">
+        <span class="pkg-k">Layer 03 · Container</span>
+        <h3>Which individual drum it is</h3>
+        <p>
+          The <strong>Serial Shipping Container Code</strong> (SSCC), issued to GS1
+          international standards and unique to each individual container rather than to the
+          batch. This is the layer that makes traceability granular enough to be useful.
+        </p>
+      </article>
+    </div>
+
+    <div class="split reveal">
+      <div class="split-body">
+        <p>
+          The structural point is the SSCC. A fifty-drum batch produces fifty distinct SSCCs,
+          not one repeated fifty times. That is what lets you isolate a single drum instead of
+          quarantining a whole consignment — and it is the requirement that manual
+          spreadsheet-based numbering fails first.
         </p>
         <p><a href="gsr-20e-api-qr-code.html#fields">See all eleven mandatory fields →</a></p>
+      </div>
+      <div class="split-aside">
+        <div class="figcard">
+          <b>50 drums = 50 SSCCs</b>
+          <span>
+            One serial per container, never reissued. Batch-level numbering does not satisfy
+            the guideline, and cannot answer the question an auditor actually asks.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <h2 id="why">Four reasons it matters</h2>
+<!-- ============================ WHY IT MATTERS ============================ -->
+<section id="why" aria-labelledby="why-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">The case</p>
+    <h2 class="sec-title reveal" id="why-h">Four reasons it matters</h2>
+    <p class="sec-intro reveal">
+      The mandate is the deadline. These are the reasons the requirement exists in the first
+      place, and they outlast the compliance date.
+    </p>
 
-        <h3>1. Counterfeiting is a supply chain problem, not a packaging problem</h3>
+    <div class="risk-grid g4">
+      <article class="risk reveal">
+        <span class="risk-n" aria-hidden="true">1</span>
+        <h3>Counterfeiting is a supply chain problem</h3>
         <p>
-          Drug counterfeiting has become a global issue, and India's scale and growth make it a
-          target. Where a supply chain has no visibility, it has gaps — and gaps are an open
-          invitation for counterfeiters to introduce fake or low-quality material.
+          Drug counterfeiting is a global issue, and India's scale makes it a target. Where a
+          supply chain has no visibility it has gaps, and gaps are an open invitation to
+          introduce fake or low-quality material. The damage attaches to the manufacturer
+          whose name is printed on the drum.
         </p>
+      </article>
+      <article class="risk reveal">
+        <span class="risk-n" aria-hidden="true">2</span>
+        <h3>It is how you prove quality and safety</h3>
         <p>
-          The damage does not stay with the counterfeiter. It attaches to the manufacturer whose
-          name is printed on the drum: their business, their reputation, and their relationship
-          with every downstream customer. And ultimately fake drugs harm patients and erode public
-          trust in the healthcare system as a whole.
+          Serialization guarantees the identity of what you shipped. With a standard set of
+          processes behind it, a manufacturer can demonstrate complete supply chain visibility
+          for their material — not assert it, demonstrate it, with a record behind every pack.
         </p>
-
-        <h3>2. It is how you prove quality and safety</h3>
-        <p>
-          Serialization guarantees the identity of what you shipped. By implementing a standard
-          set of processes, a manufacturer can demonstrate complete supply chain visibility for
-          their material — not assert it, demonstrate it, with a record behind every pack.
-        </p>
-
-        <h3>3. Problems get found and contained faster</h3>
+      </article>
+      <article class="risk reveal">
+        <span class="risk-n" aria-hidden="true">3</span>
+        <h3>Problems get found and contained faster</h3>
         <p>
           When something does go wrong, a serialized supply chain lets you identify the source
-          quickly and take preventive action before the damage widens. Without it, you are
-          reconstructing history from paperwork while the affected material keeps moving.
+          quickly and act before the damage widens. Without it you are reconstructing history
+          from paperwork while the affected material keeps moving.
         </p>
-
-        <h3>4. End-to-end traceability helps everyone downstream</h3>
+      </article>
+      <article class="risk reveal">
+        <span class="risk-n" aria-hidden="true">4</span>
+        <h3>Traceability helps everyone downstream</h3>
         <p>
-          Traceability is not only a manufacturer's benefit. Every member of the chain gains
-          from it — better inventory management, faster verification of what a drum actually
-          contains, quicker recalls, and fewer supply delays caused by uncertainty about
-          material that cannot be identified with confidence.
+          Every member of the chain gains — better inventory management, faster verification
+          of what a drum actually contains, quicker recalls, and fewer supply delays caused by
+          uncertainty about material that cannot be identified with confidence.
         </p>
+      </article>
+    </div>
+  </div>
+</section>
 
-        <h2 id="cost">The cost of staying unserialized</h2>
+<!-- ============================ THE COST ============================ -->
+<section id="cost" class="why" aria-labelledby="cost-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">What inaction costs</p>
+    <h2 class="sec-title reveal" id="cost-h">The cost of staying unserialized</h2>
+    <p class="sec-intro reveal">
+      The regulatory penalty is the obvious risk. It is rarely the expensive one.
+    </p>
+
+    <div class="why-grid g4">
+      <article class="wc reveal">
+        <span class="wc-n">01</span>
+        <h3>Export orders</h3>
         <p>
-          The regulatory penalty is the obvious risk. It is rarely the expensive one.
+          International buyers increasingly treat scannable traceability as a baseline
+          qualification. A pack that cannot be scanned raises a question at exactly the moment
+          you want none.
         </p>
-        <ul>
-          <li>
-            <strong>Export orders.</strong> International buyers increasingly treat scannable
-            traceability as a baseline qualification. A pack that cannot be scanned raises a
-            question at exactly the moment you want none.
-          </li>
-          <li>
-            <strong>Audit findings.</strong> Inspectors now look for the QR code by default.
-            An observation on an audit report costs far more time to close out than it would
-            have cost to prevent.
-          </li>
-          <li>
-            <strong>Customer confidence.</strong> Formulation manufacturers are under their own
-            traceability obligations. A supplier who cannot support them creates friction that
-            eventually gets solved by changing supplier.
-          </li>
-          <li>
-            <strong>Recall exposure.</strong> Without container-level identity, a problem in
-            one drum becomes a problem across the whole consignment, because you cannot prove
-            which drums were unaffected.
-          </li>
-        </ul>
+      </article>
+      <article class="wc reveal">
+        <span class="wc-n">02</span>
+        <h3>Audit findings</h3>
+        <p>
+          Inspectors now look for the QR code by default. An observation on an audit report
+          costs far more time to close out than it would have cost to prevent.
+        </p>
+      </article>
+      <article class="wc reveal">
+        <span class="wc-n">03</span>
+        <h3>Customer confidence</h3>
+        <p>
+          Formulation manufacturers are under their own traceability obligations. A supplier
+          who cannot support them creates friction that eventually gets solved by changing
+          supplier.
+        </p>
+      </article>
+      <article class="wc reveal">
+        <span class="wc-n">04</span>
+        <h3>Recall exposure</h3>
+        <p>
+          Without container-level identity, a problem in one drum becomes a problem across the
+          whole consignment, because you cannot prove which drums were unaffected.
+        </p>
+      </article>
+    </div>
 
-        <blockquote>
+    <blockquote class="pull reveal">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.5 5C6.5 6.7 4.7 9.6 4.7 13v6h6.6v-6.6H8.1c0-2 .9-3.7 2.6-4.8L9.5 5zm9.3 0c-3 1.7-4.8 4.6-4.8 8v6H20v-6.6h-3.2c0-2 .9-3.7 2.6-4.8L18.8 5z"/></svg>
+      <div>
+        <p>
           At present there is no standard set of rules across the API industry for track and
           trace, and it remains largely unorganised. That means no visibility in the supply
           chain, and a large information gap — which is precisely what invites counterfeiters
           into the market.
-          <cite>From the industry brief behind this platform</cite>
-        </blockquote>
-
-        <h2 id="who">Who this applies to</h2>
-        <p>
-          If you manufacture or import an Active Pharmaceutical Ingredient in India, the QR
-          code requirement applies to you at every packaging level. In practice that means:
         </p>
-        <ul>
-          <li><strong>API and bulk drug manufacturers</strong> selling into the domestic market</li>
-          <li><strong>Importers</strong> bringing API into India, who carry the same obligation</li>
-          <li><strong>Pharmaceutical exporters</strong> who additionally need GTIN and NDC-standard data for international shipments</li>
-          <li><strong>Contract manufacturing organisations</strong> running multiple product lines for multiple clients</li>
-          <li><strong>Quality and regulatory teams</strong> who have to produce the evidence when an auditor asks</li>
-        </ul>
+        <cite>From the industry brief behind this platform</cite>
+      </div>
+    </blockquote>
+  </div>
+</section>
 
-        <h2 id="next">What to do next</h2>
-        <p>
-          Read what the guideline actually requires, then check your own labels against it.
-          The regulation page sets out all eleven mandatory particulars and includes an
-          eight-point self-check you can run in a few minutes.
-        </p>
+<!-- ============================ WHO IT APPLIES TO ============================ -->
+<section id="who" class="sec-alt" aria-labelledby="who-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">Scope</p>
+    <h2 class="sec-title reveal" id="who-h">Who this applies to</h2>
+    <p class="sec-intro reveal">
+      If you manufacture or import an Active Pharmaceutical Ingredient in India, the QR code
+      requirement applies to you at every packaging level. In practice that means:
+    </p>
 
+    <div class="who g3">
+      <div class="who-c reveal">
+        <h3>API and bulk drug manufacturers</h3>
+        <p>Selling into the domestic market, at every packaging level they ship.</p>
+      </div>
+      <div class="who-c reveal">
+        <h3>Importers</h3>
+        <p>Bringing API into India, who carry exactly the same obligation as a domestic maker.</p>
+      </div>
+      <div class="who-c reveal">
+        <h3>Pharmaceutical exporters</h3>
+        <p>Who additionally need GTIN and NDC-standard data for international shipments.</p>
+      </div>
+      <div class="who-c reveal">
+        <h3>Contract manufacturing organisations</h3>
+        <p>Running multiple product lines for multiple clients, each with its own label specimen.</p>
+      </div>
+      <div class="who-c reveal">
+        <h3>Quality and regulatory teams</h3>
+        <p>Who have to produce the evidence at the moment an auditor asks for it.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============================ NEXT ============================ -->
+<section id="next" aria-labelledby="next-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">What to do next</p>
+    <h2 class="sec-title reveal" id="next-h">Read the requirement, then check your own labels</h2>
+    <p class="sec-intro reveal">
+      The regulation page sets out all eleven mandatory particulars and includes an eight-point
+      self-check you can run against your current labels in a few minutes.
+    </p>
 
     <div class="related">
       <a class="rel" href="gsr-20e-api-qr-code.html">
@@ -409,10 +526,10 @@
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <a class="btn btn-ghost-onblue btn-lg" href="tel:+919099000000">Or call +91 90990 00000</a>
-      <span class="cta-note">
+      <p class="cta-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
         We reply within one working day
-      </span>
+      </p>
     </div>
   </div>
 </section>

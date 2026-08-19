@@ -61,93 +61,122 @@
   </div>
 </section>
 
-<section>
+<div class="jump">
   <div class="wrap">
-    <div class="doc">
+    <span class="jl">On this page</span>
+    <a href="#summary">At a glance</a>
+    <a href="#requires">What it requires</a>
+    <a href="#fields">The eleven fields</a>
+    <a href="#levels">Packaging levels</a>
+    <a href="#readable">Machine-readable</a>
+    <a href="#checklist">Self-check</a>
+  </div>
+</div>
 
-      <nav class="toc" aria-label="On this page">
-        <h2>On this page</h2>
-        <ol>
-          <li><a href="#summary">The notification at a glance</a></li>
-          <li><a href="#requires">What it requires</a></li>
-          <li><a href="#fields">The eleven mandatory fields</a></li>
-          <li><a href="#levels">What "each packaging level" means</a></li>
-          <li><a href="#readable">The software-readable requirement</a></li>
-          <li><a href="#checklist">Compliance self-check</a></li>
-          <li><a href="#comply">How to comply quickly</a></li>
-        </ol>
-      </nav>
+<!-- ============================ AT A GLANCE ============================ -->
+<section id="summary" aria-labelledby="summary-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">The notification</p>
+    <h2 class="sec-title reveal" id="summary-h">G.S.R. 20(E) at a glance</h2>
+    <p class="sec-intro reveal">
+      The regulation was introduced to address counterfeiting of Active Pharmaceutical
+      Ingredients and to give the supply chain visibility it did not previously have — a
+      substantial step towards an API supply chain free of fake raw material and low-quality
+      product.
+    </p>
 
-      <div class="prose-long">
+    <div class="factbox f3 reveal">
+      <div class="factbox-h">
+        <span style="font-family:var(--f-display);background:none;color:#fff;padding:0;letter-spacing:normal;text-transform:none;font-size:16.5px">Ministry of Health and Family Welfare notification</span>
+        <span>In force</span>
+      </div>
+      <dl>
+        <div><dt>Guideline</dt><dd>G.S.R. 20(E)</dd></div>
+        <div><dt>Gazette number</dt><dd>CG-DL-E-19012022-232768</dd></div>
+        <div><dt>Date of notification</dt><dd>18 January 2022</dd></div>
+        <div><dt>Effective from</dt><dd>1 January 2023</dd></div>
+        <div><dt>Applies to</dt><dd>All API / bulk drug manufacturers and importers in India</dd></div>
+        <div><dt>Requirement</dt><dd>QR code on the label at each packaging level</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
 
-        <h2 id="summary">The notification at a glance</h2>
+<!-- ============================ WHAT IT REQUIRES ============================ -->
+<section id="requires" class="sec-alt" aria-labelledby="requires-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">The requirement</p>
+    <h2 class="sec-title reveal" id="requires-h">What it requires</h2>
+    <p class="sec-intro reveal">
+      Every manufacturer or importer of an API in India must print a QR code on the product
+      label at each level of packaging. That code must contain a defined set of information and
+      must be readable by a software application, so the pack can be tracked and traced.
+    </p>
 
-        <div class="factbox">
-          <div class="factbox-h">
-            <span style="font-family:var(--f-display);background:none;color:#fff;padding:0;letter-spacing:normal;text-transform:none;font-size:16.5px">Ministry of Health and Family Welfare notification</span>
-            <span>In force</span>
-          </div>
-          <dl>
-            <div><dt>Guideline</dt><dd>G.S.R. 20(E)</dd></div>
-            <div><dt>Gazette number</dt><dd>CG-DL-E-19012022-232768</dd></div>
-            <div><dt>Date of notification</dt><dd>18 January 2022</dd></div>
-            <div><dt>Effective from</dt><dd>1 January 2023</dd></div>
-            <div><dt>Applies to</dt><dd>All API / bulk drug manufacturers and importers in India</dd></div>
-            <div><dt>Requirement</dt><dd>QR code on the label at each packaging level</dd></div>
-          </dl>
-        </div>
-
+    <div class="pkg reveal">
+      <article class="pkg-c">
+        <span class="pkg-k">Failure point 01</span>
+        <h3>Each packaging level</h3>
         <p>
-          The regulation was introduced to address counterfeiting of Active Pharmaceutical
-          Ingredients and to give the supply chain visibility it did not previously have. It is
-          a substantial step towards a sustainable API supply chain free of fake raw material
-          and low-quality product.
+          Not only the outer shipper. Every level that is presented as a unit carries its own
+          compliant label, because every level can be separated from the others.
         </p>
-
-        <h2 id="requires">What it requires</h2>
-        <p class="lead-para">
-          Every manufacturer or importer of an API in India must print a QR code on the product
-          label at each level of packaging. That code must contain a defined set of information
-          and must be readable by a software application, so the pack can be tracked and traced.
-        </p>
+      </article>
+      <article class="pkg-c">
+        <span class="pkg-k">Failure point 02</span>
+        <h3>A defined set of information</h3>
         <p>
-          Three parts of that sentence carry the weight, and each is a common point of failure:
+          Eleven particulars, all of them, on every pack. Ten out of eleven is a finding, and
+          the conditional fields still apply wherever the material has them.
         </p>
-        <ul>
-          <li><strong>Each packaging level</strong> — not only the outer shipper. See below.</li>
-          <li><strong>A defined set of information</strong> — eleven particulars, all of them, on every pack.</li>
-          <li><strong>Readable with a software application</strong> — a decorative QR code that resolves to nothing does not satisfy this.</li>
-        </ul>
-
-        <h2 id="fields">The eleven mandatory particulars</h2>
+      </article>
+      <article class="pkg-c">
+        <span class="pkg-k">Failure point 03</span>
+        <h3>Readable with a software application</h3>
         <p>
-          The guideline specifies exactly what the QR code must carry. The right-hand column is
-          not part of the notification — it is what each field means once you are actually
-          producing labels.
+          A decorative QR code that resolves to nothing does not satisfy this. It has to
+          resolve, and what it resolves to has to match the pack.
         </p>
+      </article>
+    </div>
+  </div>
+</section>
 
-        <div class="tbl-wrap">
-          <table class="ref">
-            <caption class="hp-field">The eleven data fields a QR code on an API label must contain under G.S.R. 20(E)</caption>
-            <thead>
-              <tr><th scope="col">#</th><th scope="col">Required particular</th><th scope="col">What it means in practice</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>01</td><td><strong>Unique product identification code</strong></td><td>A code that identifies this product and no other. Held on the product master and applied to every batch of it.</td></tr>
-              <tr><td>02</td><td><strong>Name of the API</strong></td><td>The approved product name, matching your regulatory filings — not an internal shorthand.</td></tr>
-              <tr><td>03</td><td><strong>Brand name, if any</strong></td><td>Conditional. Printed only where a brand name exists for the material.</td></tr>
-              <tr><td>04</td><td><strong>Name and address of the manufacturer</strong></td><td>The full registered address. For imports, the details of the manufacturer, held against the import licence.</td></tr>
-              <tr><td>05</td><td><strong>Batch number</strong></td><td>Carried into every container serial generated from that batch, so a scan resolves back to the batch record.</td></tr>
-              <tr><td>06</td><td><strong>Batch size</strong></td><td>With its unit of measure. A batch size without a unit is not a batch size.</td></tr>
-              <tr><td>07</td><td><strong>Date of manufacturing</strong></td><td>The format on the human-readable label can be configured; the data in the QR payload stays unambiguous.</td></tr>
-              <tr><td>08</td><td><strong>Date of expiry or retesting</strong></td><td>Whichever applies to the material. Some APIs carry a retest date rather than an expiry date, and the label must reflect the right one.</td></tr>
-              <tr><td>09</td><td><strong>Serial shipping container code</strong></td><td>The GS1 SSCC. Unique to each individual container — fifty drums means fifty distinct SSCCs, not one repeated fifty times.</td></tr>
-              <tr><td>10</td><td><strong>Manufacturing or import licence number</strong></td><td>Whichever applies. Manufacturers print the manufacturing licence; importers print the import licence.</td></tr>
-              <tr><td>11</td><td><strong>Special storage conditions, if required</strong></td><td>Conditional. Temperature and handling requirements where the material has them.</td></tr>
-            </tbody>
-          </table>
-        </div>
+<!-- ============================ THE ELEVEN FIELDS ============================ -->
+<section id="fields" aria-labelledby="fields-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">The data</p>
+    <h2 class="sec-title reveal" id="fields-h">The eleven mandatory particulars</h2>
+    <p class="sec-intro reveal">
+      The guideline specifies exactly what the QR code must carry. The right-hand column is not
+      part of the notification — it is what each field means once you are actually producing
+      labels.
+    </p>
 
+    <div class="tbl-wrap tbl-full reveal">
+      <table class="ref">
+        <caption class="hp-field">The eleven data fields a QR code on an API label must contain under G.S.R. 20(E)</caption>
+        <thead>
+          <tr><th scope="col">#</th><th scope="col">Required particular</th><th scope="col">What it means in practice</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>01</td><td><strong>Unique product identification code</strong></td><td>A code that identifies this product and no other. Held on the product master and applied to every batch of it.</td></tr>
+          <tr><td>02</td><td><strong>Name of the API</strong></td><td>The approved product name, matching your regulatory filings — not an internal shorthand.</td></tr>
+          <tr><td>03</td><td><strong>Brand name, if any</strong></td><td>Conditional. Printed only where a brand name exists for the material.</td></tr>
+          <tr><td>04</td><td><strong>Name and address of the manufacturer</strong></td><td>The full registered address. For imports, the details of the manufacturer, held against the import licence.</td></tr>
+          <tr><td>05</td><td><strong>Batch number</strong></td><td>Carried into every container serial generated from that batch, so a scan resolves back to the batch record.</td></tr>
+          <tr><td>06</td><td><strong>Batch size</strong></td><td>With its unit of measure. A batch size without a unit is not a batch size.</td></tr>
+          <tr><td>07</td><td><strong>Date of manufacturing</strong></td><td>The format on the human-readable label can be configured; the data in the QR payload stays unambiguous.</td></tr>
+          <tr><td>08</td><td><strong>Date of expiry or retesting</strong></td><td>Whichever applies to the material. Some APIs carry a retest date rather than an expiry date, and the label must reflect the right one.</td></tr>
+          <tr><td>09</td><td><strong>Serial shipping container code</strong></td><td>The GS1 SSCC. Unique to each individual container — fifty drums means fifty distinct SSCCs, not one repeated fifty times.</td></tr>
+          <tr><td>10</td><td><strong>Manufacturing or import licence number</strong></td><td>Whichever applies. Manufacturers print the manufacturing licence; importers print the import licence.</td></tr>
+          <tr><td>11</td><td><strong>Special storage conditions, if required</strong></td><td>Conditional. Temperature and handling requirements where the material has them.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="split reveal">
+      <div class="split-body">
         <div class="note-box">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
           <span>
@@ -158,28 +187,74 @@
             allocated and controlled centrally by the serialization system.
           </span>
         </div>
+      </div>
+      <div class="split-aside">
+        <div class="figcard">
+          <b>11 / 11</b>
+          <span>
+            Every particular is built into the APIQR label template and the QR payload, so a
+            field cannot be forgotten on a batch.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <h2 id="levels">What "each packaging level" means</h2>
-        <p>
-          The requirement is not satisfied by labelling the outer shipper alone. Each level of
-          packaging that is presented as a unit needs its own compliant label:
-        </p>
-        <ul>
-          <li><strong>Primary pack</strong> — the container in direct contact with the material: the drum, the HDPE container, the fibre drum with its liner.</li>
-          <li><strong>Secondary pack</strong> — where material is grouped or over-packed before shipment.</li>
-          <li><strong>Tertiary / shipper</strong> — the outermost unit that moves through the logistics chain.</li>
-        </ul>
-        <p>
-          Because each level is a distinct physical unit that can be separated from the others,
-          each needs its own identity. A drum that leaves its shipper still has to be
-          identifiable on its own.
-        </p>
+<!-- ============================ PACKAGING LEVELS ============================ -->
+<section id="levels" class="sec-alt" aria-labelledby="levels-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">Scope of the label</p>
+    <h2 class="sec-title reveal" id="levels-h">What "each packaging level" means</h2>
+    <p class="sec-intro reveal">
+      The requirement is not satisfied by labelling the outer shipper alone. Each level of
+      packaging that is presented as a unit needs its own compliant label — because each is a
+      distinct physical unit that can be separated from the others. A drum that leaves its
+      shipper still has to be identifiable on its own.
+    </p>
 
-        <h2 id="readable">The software-readable requirement</h2>
+    <div class="pkg reveal">
+      <article class="pkg-c">
+        <span class="pkg-k">Level 01</span>
+        <h3>Primary pack</h3>
+        <p>
+          The container in direct contact with the material: the drum, the HDPE container, the
+          fibre drum with its liner.
+        </p>
+      </article>
+      <article class="pkg-c">
+        <span class="pkg-k">Level 02</span>
+        <h3>Secondary pack</h3>
+        <p>
+          Where material is grouped or over-packed before shipment, and the group itself moves
+          as one unit.
+        </p>
+      </article>
+      <article class="pkg-c">
+        <span class="pkg-k">Level 03</span>
+        <h3>Tertiary / shipper</h3>
+        <p>
+          The outermost unit that moves through the logistics chain, and the one most sites
+          already label today.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MACHINE READABLE ============================ -->
+<section id="readable" aria-labelledby="readable-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">Machine-readable</p>
+    <h2 class="sec-title reveal" id="readable-h">What "readable by a software application" means</h2>
+
+    <div class="split reveal">
+      <div class="split-body">
         <p>
           The guideline requires the code to be readable by a software application for further
           tracking and tracing. In practice, that means an ordinary phone camera should resolve
-          the code to a page showing the pack's data — no proprietary app, no dedicated scanner.
+          the code to a page showing the pack's data — <strong>no proprietary app, no dedicated
+          scanner</strong>.
         </p>
         <p>
           It also means the data has to exist somewhere authoritative. A QR code is a pointer;
@@ -187,52 +262,90 @@
           the reader's hand.
         </p>
         <p>
-          <a href="index.html#how">See what a compliant scan looks like →</a>
+          Anyone in the chain — a customer's goods-in team, an inspector, a logistics
+          handler — gets the same answer from the same code, without being issued anything.
         </p>
+        <p><a href="index.html#how">See what a compliant scan looks like →</a></p>
+      </div>
 
-        <h2 id="checklist">Compliance self-check</h2>
-        <p>
-          Eight questions. If you cannot answer yes to all of them, there is a gap between
-          your labels and the guideline. Nothing here is stored or sent anywhere — the
-          checkboxes are for your own use.
-        </p>
-
-        <div class="checklist">
-          <div class="checklist-h">
-            <h3>Is your API labelling compliant?</h3>
-            <span class="check-score">0 of 8 in place</span>
-          </div>
-          <ul>
-            <li><label><input type="checkbox"><span><b>Every API pack we ship carries a QR code</b><span>Not just export consignments, and not just the outer shipper.</span></span></label></li>
-            <li><label><input type="checkbox"><span><b>The QR code is on every packaging level</b><span>Primary, secondary and tertiary, each independently identifiable.</span></span></label></li>
-            <li><label><input type="checkbox"><span><b>All eleven mandatory particulars are present</b><span>Including the conditional ones where they apply to the material.</span></span></label></li>
-            <li><label><input type="checkbox"><span><b>Each container has its own unique SSCC</b><span>Not one code repeated across the whole batch.</span></span></label></li>
-            <li><label><input type="checkbox"><span><b>A standard phone camera resolves the code</b><span>To a readable page, with no proprietary app required.</span></span></label></li>
-            <li><label><input type="checkbox"><span><b>GTIN and SSCC follow GS1 standards</b><span>Allocated from a controlled range, never reissued.</span></span></label></li>
-            <li><label><input type="checkbox"><span><b>Nothing prints without a recorded approval</b><span>An authorised second person signs off before serials exist.</span></span></label></li>
-            <li><label><input type="checkbox"><span><b>We can produce an audit trail on demand</b><span>Who created, approved, printed and reprinted — with timestamps.</span></span></label></li>
-          </ul>
-          <div class="checklist-f">
-            <span>Anything unchecked is a finding waiting to happen. APIQR closes all eight.</span>
-            <a href="contact.html">Talk it through with a specialist →</a>
+      <div class="split-aside">
+        <div class="phone">
+          <div class="phone-screen">
+            <img src="assets/img/qrscan-view.png"
+                 width="1080" height="2934" loading="lazy"
+                 alt="A mobile phone showing the result of scanning an APIQR label: manufacturer name and address, GTIN, product name, brand name, batch number, batch size, manufacturing and expiry dates, ERP code, manufacturing and import licence numbers, SSCC, gross, tare and net weights, storage conditions and CAS number.">
           </div>
         </div>
+        <p class="phone-cap">Anyone with a phone camera · <b>apiqr.in</b> · no app to install</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <h2 id="comply">How to comply quickly</h2>
+<!-- ============================ SELF CHECK ============================ -->
+<section id="checklist" class="sec-alt" aria-labelledby="checklist-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">Check yourself</p>
+    <h2 class="sec-title reveal" id="checklist-h">Compliance self-check</h2>
+    <p class="sec-intro reveal">
+      Eight questions. If you cannot answer yes to all of them, there is a gap between your
+      labels and the guideline. Nothing here is stored or sent anywhere — the checkboxes are
+      for your own use.
+    </p>
+
+    <div class="checklist reveal">
+      <div class="checklist-h">
+        <h3>Is your API labelling compliant?</h3>
+        <span class="check-score">0 of 8 in place</span>
+      </div>
+      <ul>
+        <li><label><input type="checkbox"><span><b>Every API pack we ship carries a QR code</b><span>Not just export consignments, and not just the outer shipper.</span></span></label></li>
+        <li><label><input type="checkbox"><span><b>The QR code is on every packaging level</b><span>Primary, secondary and tertiary, each independently identifiable.</span></span></label></li>
+        <li><label><input type="checkbox"><span><b>All eleven mandatory particulars are present</b><span>Including the conditional ones where they apply to the material.</span></span></label></li>
+        <li><label><input type="checkbox"><span><b>Each container has its own unique SSCC</b><span>Not one code repeated across the whole batch.</span></span></label></li>
+        <li><label><input type="checkbox"><span><b>A standard phone camera resolves the code</b><span>To a readable page, with no proprietary app required.</span></span></label></li>
+        <li><label><input type="checkbox"><span><b>GTIN and SSCC follow GS1 standards</b><span>Allocated from a controlled range, never reissued.</span></span></label></li>
+        <li><label><input type="checkbox"><span><b>Nothing prints without a recorded approval</b><span>An authorised second person signs off before serials exist.</span></span></label></li>
+        <li><label><input type="checkbox"><span><b>We can produce an audit trail on demand</b><span>Who created, approved, printed and reprinted — with timestamps.</span></span></label></li>
+      </ul>
+      <div class="checklist-f">
+        <span>Anything unchecked is a finding waiting to happen. APIQR closes all eight.</span>
+        <a href="contact.html">Talk it through with a specialist →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ HOW TO COMPLY ============================ -->
+<section id="comply" aria-labelledby="comply-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">The short route</p>
+    <h2 class="sec-title reveal" id="comply-h">How to comply quickly</h2>
+
+    <div class="split reveal">
+      <div class="split-body">
         <p>
           The requirement is detailed but not complicated, and it does not need a change to
           your packing line. What it needs is a system that holds the product and batch data,
-          allocates SSCC serials correctly, prints a compliant label, and keeps a record of
-          who did what.
+          allocates SSCC serials correctly, prints a compliant label, and keeps a record of who
+          did what.
         </p>
         <p>
-          <strong>APIQR</strong> is built specifically against this guideline. It is cloud-based,
-          so there is nothing to procure and nothing to install on the shop floor, and a typical
-          implementation runs four to five working days from kick-off to the first compliant
-          printed label.
+          <strong>APIQR</strong> is built specifically against this guideline. It is
+          cloud-based, so there is nothing to procure and nothing to install on the shop floor,
+          and a typical implementation runs four to five working days from kick-off to the
+          first compliant printed label.
         </p>
         <p><a href="api-serialization-software.html">See how the platform works →</a></p>
-
+      </div>
+      <div class="split-aside">
+        <div class="figcard">
+          <b>4–5 days</b>
+          <span>
+            Kick-off to the first compliant printed label, with no server procurement and no
+            change to the packing line.
+          </span>
+        </div>
       </div>
     </div>
 

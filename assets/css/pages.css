@@ -264,3 +264,139 @@ form.enquiry{padding:26px;display:grid;grid-template-columns:1fr;gap:18px}
   .toc{top:86px}
   .prose-long h2{scroll-margin-top:88px}
 }
+
+/* ==========================================================================
+   SECTIONED CONTENT PAGES
+   The long-form pages used to be a sidebar TOC beside one 72ch column of
+   prose, which reads as an article rather than a product page. They are now
+   built from the same banded sections the homepage uses. These are the few
+   pieces the homepage did not already have.
+   ========================================================================== */
+
+/* ---------- horizontal section nav, in place of the sidebar TOC ---------- */
+.jump{background:var(--ground-alt);border-bottom:1px solid var(--line)}
+.jump .wrap{
+  display:flex;flex-wrap:wrap;align-items:center;gap:0 2px;
+  padding-top:0;padding-bottom:0;
+}
+.jump .jl{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);padding-right:20px;flex:none;
+}
+.jump a{
+  font-family:var(--f-display);font-size:14.5px;font-weight:500;color:var(--ink);
+  text-decoration:none;padding:15px 16px;border-bottom:2px solid transparent;
+  transition:color .16s ease,border-color .16s ease;
+}
+.jump a:hover{color:var(--cyan-ink);border-bottom-color:var(--cyan)}
+@media(max-width:700px){
+  .jump .jl{display:none}
+  .jump a{padding:12px 12px;font-size:13.5px}
+}
+
+/* ---------- text beside a supporting panel ---------- */
+.split{display:grid;grid-template-columns:1fr;gap:clamp(24px,3.2vw,48px);margin-top:38px;align-items:start}
+@media(min-width:920px){.split{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
+.split-body{display:flex;flex-direction:column;gap:17px;font-size:17px;max-width:68ch}
+.split-body strong{color:var(--ink);font-weight:600}
+.split-aside{display:flex;flex-direction:column;gap:16px}
+
+/* a single emphatic number pulled out of the copy */
+.figcard{
+  border:1px solid var(--line);border-left:3px solid var(--cyan);border-radius:var(--r);
+  background:var(--surface);padding:24px 26px;box-shadow:var(--shadow-sm);
+}
+.figcard b{
+  display:block;font-family:var(--f-display);font-size:clamp(30px,3.4vw,40px);
+  font-weight:700;color:var(--blue);letter-spacing:-.025em;line-height:1;
+}
+.figcard span{display:block;margin-top:10px;font-size:15px;color:var(--body);line-height:1.5}
+
+/* ---------- four-up variant of the homepage risk cards ---------- */
+@media(min-width:620px){.risk-grid.g4{grid-template-columns:1fr 1fr}}
+@media(min-width:1100px){.risk-grid.g4{grid-template-columns:repeat(4,1fr)}}
+/* numbered rather than iconed */
+.risk-n{
+  width:44px;height:44px;border-radius:var(--r);background:var(--cyan-soft);
+  border:1px solid var(--cyan-line);display:grid;place-items:center;
+  font-family:var(--f-display);font-weight:700;font-size:17px;color:var(--cyan-ink);
+}
+
+/* four-up variant of the navy numbered cards: the base grid is three
+   columns, which strands a fourth card in a half-empty row */
+@media(min-width:700px){.why-grid.g4{grid-template-columns:1fr 1fr}}
+@media(min-width:1100px){.why-grid.g4{grid-template-columns:repeat(4,1fr)}}
+
+/* ---------- three-up variant of the audience cards ---------- */
+@media(min-width:1000px){.who.g3{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- pull quote on a navy band ---------- */
+.pull{
+  margin-top:48px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.055);
+  border-radius:var(--r);padding:clamp(24px,3.4vw,40px);
+  display:flex;gap:clamp(16px,2vw,24px);align-items:flex-start;
+}
+.pull > svg{color:var(--cyan);flex:none}
+.pull p{color:#fff;font-size:clamp(17px,1.75vw,21px);line-height:1.55;max-width:68ch}
+.pull cite{
+  display:block;margin-top:16px;font-style:normal;font-family:var(--f-mono);
+  font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:#9FC9E8;
+}
+
+/* ---------- L1 to L5 ---------- */
+.lvl{
+  display:grid;grid-template-columns:1fr;gap:1px;margin-top:38px;
+  background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+}
+@media(min-width:660px){.lvl{grid-template-columns:1fr 1fr}}
+@media(min-width:1050px){.lvl{grid-template-columns:repeat(5,1fr)}}
+.lvl-c{background:var(--surface);padding:24px 20px;display:flex;flex-direction:column;gap:9px}
+.lvl-n{
+  font-family:var(--f-mono);font-size:11.5px;font-weight:600;letter-spacing:.1em;
+  color:var(--cyan-ink);background:var(--cyan-soft);border:1px solid var(--cyan-line);
+  border-radius:2px;padding:3px 9px;align-self:flex-start;
+}
+.lvl-c h3{font-size:16px}
+.lvl-c p{font-size:14.5px;color:var(--muted);line-height:1.5}
+
+/* ---------- the three packaging levels ---------- */
+.pkg{display:grid;grid-template-columns:1fr;gap:16px;margin-top:38px}
+@media(min-width:820px){.pkg{grid-template-columns:repeat(3,1fr)}}
+.pkg-c{
+  border:1px solid var(--line);border-radius:var(--r);background:var(--surface);
+  padding:26px 24px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-sm);
+  position:relative;overflow:hidden;
+}
+.pkg-c::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--cyan)}
+.pkg-k{
+  font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);
+}
+.pkg-c h3{font-size:18px}
+.pkg-c p{font-size:15px}
+
+/* three-up variant of the fact panel, now that it is not inside a prose column */
+@media(min-width:1000px){.factbox.f3 dl{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- wide reference table, no longer squeezed into a prose column -- */
+.tbl-full{margin-top:38px}
+.tbl-full .ref{font-size:15.5px}
+.tbl-full .ref td:first-child{white-space:nowrap}
+
+/* ---------- capability cards ---------- */
+.caps{display:grid;grid-template-columns:1fr;gap:16px;margin-top:38px}
+@media(min-width:700px){.caps{grid-template-columns:1fr 1fr}}
+@media(min-width:1100px){.caps{grid-template-columns:repeat(4,1fr)}}
+.cap{
+  border:1px solid var(--line);border-radius:var(--r);background:var(--surface);
+  padding:26px 24px;display:flex;flex-direction:column;gap:11px;box-shadow:var(--shadow-sm);
+}
+.cap-icon{
+  width:44px;height:44px;border-radius:var(--r);background:var(--cyan-soft);
+  border:1px solid var(--cyan-line);display:grid;place-items:center;color:var(--cyan-ink);
+}
+.cap h3{font-size:17.5px}
+.cap p{font-size:15px}
+
+/* sections that follow a .jump strip should not double up on top padding */
+.jump + section{padding-top:clamp(44px,5vw,72px)}
