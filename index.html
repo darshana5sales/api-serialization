@@ -30,7 +30,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
 <!-- per-page head extras (LCP preloads etc.) -->
-<link rel="preload" as="image" href="assets/img/apiqr-finallabel.png" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/apiqr-finallabel.png" fetchpriority="high"><link rel="preload" as="image" href="assets/img/apiqr-qr-code.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,12 +246,25 @@
 
         <figure class="label-frame">
           <div class="label-inner">
-            <div class="label-shot">
-              <img class="label-img"
-                   src="assets/img/apiqr-finallabel.png"
-                   width="1315" height="869" fetchpriority="high"
-                   alt="A finished API label produced by APIQR for Ropivacaine Hydrochloride USP, showing material code, GTIN, batch number, manufacturing and expiry dates, container number, SSCC number, batch quantity, gross, tare and net weights, manufacturing licence number, storage conditions, caution text, manufacturer name and address, and a QR code.">
-              <span class="scan" aria-hidden="true"></span>
+            <div class="reel">
+              <div class="reel-stage">
+
+                <div class="reel-face reel-code">
+                  <img src="assets/img/apiqr-qr-code.png"
+                       width="844" height="844" decoding="async"
+                       alt="The QR code printed on this label, encoding the container's SSCC 589011690000084481.">
+                  <span class="reel-scan" aria-hidden="true"></span>
+                  <span class="reel-hint">Scan it with any phone camera</span>
+                </div>
+
+                <div class="reel-face reel-label">
+                  <img class="label-img"
+                       src="assets/img/apiqr-finallabel.png"
+                       width="1315" height="869" fetchpriority="high"
+                       alt="A finished API label produced by APIQR for Ropivacaine Hydrochloride USP, showing material code, GTIN, batch number, manufacturing and expiry dates, container number, SSCC number, batch quantity, gross, tare and net weights, manufacturing licence number, storage conditions, caution text, manufacturer name and address, and a QR code.">
+                </div>
+
+              </div>
             </div>
           </div>
           <figcaption class="label-cap">
