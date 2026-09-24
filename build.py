@@ -42,7 +42,7 @@ ORG = {
     "image": "https://www.apiqr.in/assets/img/logo-512.png",
     "description": (
         "Serialization, track-and-trace and end-of-line automation solutions for the "
-        "pharmaceutical industry, with L1 to L5 capability and 12+ years of serialization experience."
+        "pharmaceutical industry, with L1 to L5 capability and 15+ years of serialization experience."
     ),
     "address": {
         "@type": "PostalAddress",

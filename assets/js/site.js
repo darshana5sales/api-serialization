@@ -80,13 +80,24 @@
   var checklist = document.querySelector(".checklist");
   if (checklist) {
     var boxes = checklist.querySelectorAll('input[type="checkbox"]');
-    var score = checklist.querySelector(".check-score");
+    // the score and meter may sit beside the list rather than inside it
+    var score = document.querySelector(".check-score");
+    var segs  = document.querySelectorAll(".sc-bar i");
+    var msg   = document.querySelector(".sc-meter-msg");
     var update = function () {
-      var done = 0;
+      var done = 0, total = boxes.length;
       boxes.forEach(function (b) { if (b.checked) done++; });
+      segs.forEach(function (s, i) { s.classList.toggle("on", i < done); });
+      if (msg) {
+        var left = total - done;
+        msg.textContent =
+          done === 0    ? "Tick each requirement already in place to see where the gaps are." :
+          left === 0    ? "All eight in place. Keep it that way with controlled, audit-ready labelling." :
+          left + (left === 1 ? " gap" : " gaps") + " to close before your labels meet the requirement.";
+      }
       if (!score) return;
-      score.textContent = done + " of " + boxes.length + " in place";
-      score.classList.toggle("done", done === boxes.length);
+      score.textContent = done + " of " + total + " in place";
+      score.classList.toggle("done", done === total);
     };
     boxes.forEach(function (b) { b.addEventListener("change", update); });
     update();
@@ -132,7 +143,7 @@
   /* ---------- image lightbox ----------
      Screens are dense, so let people open one full size. The trigger is added
      by script: without JS the images are simply images, which is correct. */
-  var zoomables = document.querySelectorAll(".shot-frame img, .gallery figure img");
+  var zoomables = document.querySelectorAll(".shot-frame img, .pf-screen img, .gallery figure img, .tile figure img");
   if (zoomables.length) {
     var lb = document.createElement("div");
     lb.className = "lb";
@@ -157,15 +168,20 @@
       lastFocus = document.activeElement;
       lbImg.src = img.currentSrc || img.src;
       lbImg.alt = img.alt || "";
-      // caption, best source first: the tab panel's own heading, then a
-      // figcaption, then the alt text
+      // caption, best source first: the tab panel's own heading, then the
+      // tile's title, then a figcaption, then the alt text
       var panel = img.closest(".shot-panel");
+      var tile  = img.closest(".tile");
       var fig   = img.closest("figure");
       var cap   = fig && fig.querySelector("figcaption:not(.lb-cap)");
       if (panel && panel.querySelector(".shot-info h3")) {
         var lead = panel.querySelector(".shot-info > p");
         lbCap.innerHTML = "<b>" + panel.querySelector(".shot-info h3").textContent + "</b>" +
                           (lead ? lead.textContent : "");
+      } else if (tile && tile.querySelector("b")) {
+        var sub = tile.querySelector("p");
+        lbCap.innerHTML = "<b>" + tile.querySelector("b").textContent + "</b>" +
+                          (sub ? sub.textContent : "");
       } else if (cap) {
         lbCap.innerHTML = cap.innerHTML;
       } else {
@@ -197,16 +213,24 @@
     });
 
     // an affordance only makes sense once the behaviour exists, so add it here
-    document.querySelectorAll(".shot-panel").forEach(function (panel) {
-      var frame = panel.querySelector(".shot-frame");
-      if (!frame || panel.querySelector(".zoom-hint")) return;
+    function zoomHint(after, text) {
       var h = document.createElement("p");
       h.className = "zoom-hint";
       h.innerHTML =
         '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
         'stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/>' +
-        '<path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg> Click the screen to enlarge';
-      frame.insertAdjacentElement("afterend", h);
+        '<path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg> ' + text;
+      after.insertAdjacentElement("afterend", h);
+    }
+    document.querySelectorAll(".shot-panel").forEach(function (panel) {
+      var frame = panel.querySelector(".shot-frame");
+      if (!frame || panel.querySelector(".zoom-hint")) return;
+      zoomHint(frame, "Click the screen to enlarge");
+    });
+    document.querySelectorAll(".tiles").forEach(function (list) {
+      var next = list.nextElementSibling;
+      if (next && next.classList.contains("zoom-hint")) return;
+      zoomHint(list, "Click any screen to enlarge");
     });
 
     lbClose.addEventListener("click", close);

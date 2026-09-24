@@ -186,6 +186,14 @@ section{padding:clamp(64px,8vw,132px) 0}
 .header-cta{display:flex;align-items:center;gap:14px}
 @media(max-width:1040px){.nav{display:none}}
 @media(max-width:520px){.header-cta .btn{padding:11px 16px;font-size:14.5px}}
+/* on a 390px screen the brand, the call to action and the menu button add up
+   to more than the gutter leaves, and the button label wraps onto two lines */
+@media(max-width:430px){
+  .site-header .wrap{gap:12px}
+  .header-cta{gap:9px}
+  .header-cta .btn{padding:10px 13px;font-size:13.5px}
+  .brand-sub{white-space:nowrap}
+}
 
 .nav-toggle{
   display:none;background:none;border:1.5px solid var(--line);border-radius:var(--r);
@@ -261,8 +269,9 @@ section{padding:clamp(64px,8vw,132px) 0}
 .hero h1{
   font-size:var(--fs-hero-h1);
   letter-spacing:-.03em;line-height:1.08;margin-top:32px;
-  /* an explicit <br> already sets the break; balance fights it */
-  text-wrap:initial;
+  /* one hard break separates the statement from the promise; balance then
+     evens out the statement's own wrap instead of leaving a two-word orphan */
+  text-wrap:balance;
   overflow-wrap:break-word;
 }
 /* Below 1000px the copy column is narrow enough that the promise reads
@@ -274,6 +283,11 @@ section{padding:clamp(64px,8vw,132px) 0}
    across a hard <br>. */
 @media(min-width:1000px){.hero h1 .br-narrow{display:none}}
 .hero h1 .nb{white-space:nowrap}
+
+/* The promise line sits in brand blue, with the marker reserved for the
+   part that actually sells: the five days. Highlighting the whole line
+   turned into a solid yellow bar across the column. */
+.hero h1 .promise{color:var(--blue)}
 
 /* marker highlight that wraps with the text instead of forcing one line */
 .hero h1 .hl{
@@ -349,6 +363,9 @@ section{padding:clamp(64px,8vw,132px) 0}
   .hero-stage::after{right:-100vw}
 }
 .stage-in{position:relative;z-index:1;width:100%;max-width:520px}
+/* the hero photograph needs more width than the label card did, or its
+   internal detail -- the drum label, the phone rows -- stops being readable */
+.stage-wide{max-width:660px}
 
 /* proof-sheet header, so the panel reads as system output rather than art */
 .stage-bar{
@@ -363,89 +380,21 @@ section{padding:clamp(64px,8vw,132px) 0}
   box-shadow:0 0 0 4px rgba(0,175,239,.22);animation:pulse 2.4s ease-in-out infinite;
 }
 
-.label-frame{position:relative;width:100%}
-/* prepress crop marks */
-.label-frame::before,.label-frame::after{
-  content:"";position:absolute;width:18px;height:18px;pointer-events:none;
-}
-.label-frame::before{top:-14px;left:-14px;border-top:1.5px solid var(--cyan);border-left:1.5px solid var(--cyan)}
-.label-frame::after{bottom:-14px;right:-14px;border-bottom:1.5px solid var(--cyan);border-right:1.5px solid var(--cyan)}
-.label-inner{position:relative}
-.label-inner::before,.label-inner::after{
+/* --------------------------------------------------------------------------
+   Hero photograph. Framed with prepress corner marks so it reads as system
+   output on a proof sheet rather than as stock art dropped into a panel.
+   -------------------------------------------------------------------------- */
+.hero-shot{position:relative;width:100%}
+.hero-shot::before,.hero-shot::after{
   content:"";position:absolute;width:18px;height:18px;pointer-events:none;z-index:2;
 }
-.label-inner::before{top:-14px;right:-14px;border-top:1.5px solid var(--cyan);border-right:1.5px solid var(--cyan)}
-.label-inner::after{bottom:-14px;left:-14px;border-bottom:1.5px solid var(--cyan);border-left:1.5px solid var(--cyan)}
-/* --------------------------------------------------------------------------
-   The label reel. Two faces on one card, flipping on a loop:
-     1. the QR code as printed on the label, with a scan sweep over it
-     2. the finished label itself
-   The QR is not a generated stand-in -- it is cut pixel-for-pixel out of
-   apiqr-finallabel.png, so it decodes to the same string the printed code
-   does (https://apiqr.in/00/<SSCC>) and a phone pointed at the screen
-   resolves what the real pack resolves to.
-   -------------------------------------------------------------------------- */
-.reel{
-  position:relative;width:100%;aspect-ratio:1315/869;
-  perspective:1600px;border-radius:2px;
-  box-shadow:0 30px 70px -30px rgba(0,0,0,.75);
-}
-.reel-stage{
-  position:absolute;inset:0;transform-style:preserve-3d;
-  animation:reelFlip 12s cubic-bezier(.65,0,.35,1) infinite;
-}
-.reel-face{
-  position:absolute;inset:0;overflow:hidden;background:#fff;border-radius:2px;
-  -webkit-backface-visibility:hidden;backface-visibility:hidden;
-}
-.reel-label{transform:rotateY(180deg)}
-.reel-label .label-img{width:100%;height:100%;object-fit:contain;background:#fff}
-
-/* face one: the code, sized to sit comfortably inside the card */
-.reel-code{display:block}
-/* object-fit:contain rather than a percentage height: the percentage was
-   resolving against the wrong box and pushing the code past the card, where
-   .reel-face's overflow clipped its bottom rows. contain cannot overflow.
-   The bottom padding reserves the strip the hint sits in. */
-.reel-code img{
-  width:100%;height:100%;object-fit:contain;
-  box-sizing:border-box;padding:4% 4% 11%;display:block;
-}
-.reel-hint{
-  position:absolute;left:0;right:0;bottom:3.5%;
-  font-family:var(--f-mono);font-size:clamp(8.5px,.85vw,10.5px);
-  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
-  text-align:center;
-}
-.reel-scan{
-  position:absolute;left:0;right:0;top:0;height:16%;pointer-events:none;
-  background:linear-gradient(180deg,
-    rgba(0,175,239,0) 0%,rgba(0,175,239,.10) 55%,rgba(0,175,239,.30) 94%,rgba(0,175,239,0) 100%);
-  border-bottom:1.5px solid rgba(0,175,239,.85);
-  animation:reelScan 12s cubic-bezier(.4,0,.2,1) infinite;
+.hero-shot::before{top:-13px;left:-13px;border-top:1.5px solid var(--cyan);border-left:1.5px solid var(--cyan)}
+.hero-shot::after{bottom:-13px;right:-13px;border-bottom:1.5px solid var(--cyan);border-right:1.5px solid var(--cyan)}
+.hero-shot img{
+  width:100%;height:auto;display:block;border-radius:2px;background:#fff;
+  box-shadow:0 30px 70px -32px rgba(0,0,0,.72);
 }
 
-/* hold the code, flip, hold the label, flip back */
-@keyframes reelFlip{
-  0%,38%   {transform:rotateY(0deg)}
-  50%,88%  {transform:rotateY(180deg)}
-  100%     {transform:rotateY(360deg)}
-}
-/* the sweep runs only while the code is facing the viewer */
-@keyframes reelScan{
-  0%,4%    {transform:translateY(-120%);opacity:0}
-  9%       {opacity:1}
-  30%      {transform:translateY(525%);opacity:1}
-  34%,100% {transform:translateY(525%);opacity:0}
-}
-
-/* With motion suppressed the flip never runs, so the card must not be left
-   showing the code face -- the label is the informative side. */
-@media (prefers-reduced-motion:reduce){
-  .reel-stage{transform:none}
-  .reel-code{display:none}
-  .reel-label{transform:none}
-}
 .label-cap{
   display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;
   margin-top:20px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;
@@ -787,6 +736,453 @@ body.lb-open{overflow:hidden}
   font-size:13.5px;color:#7E93B6;
 }
 .foot-bottom .mono{font-family:var(--f-mono);font-size:12px}
+
+/* ==========================================================================
+   HOME — SHARED SECTION HEAD
+   A centred eyebrow needs a rule on both sides; the default one-sided rule
+   reads as broken when the block is centred.
+   ========================================================================== */
+.eyebrow-center{justify-content:center}
+.eyebrow-center::after{content:"";width:26px;height:2px;background:var(--cyan);flex:none}
+
+.sec-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
+.sec-head .sec-title{max-width:26ch}
+/* a heading that sets its own break needs room for the longer of its lines */
+.sec-head .sec-title-wide{max-width:none;text-wrap:initial}
+
+/* ==========================================================================
+   BUILT FOR API SERIALIZATION — the standards strip under the hero
+   ========================================================================== */
+.builtfor{
+  padding:clamp(40px,5vw,72px) 0;
+  background:var(--ground-alt);border-bottom:1px solid var(--line);
+}
+.bf-card{
+  background:linear-gradient(180deg,#fff 0%,#FAFCFE 100%);
+  border:1px solid var(--line);border-radius:12px;
+  padding:clamp(26px,3.2vw,44px) clamp(18px,2.6vw,44px);
+  box-shadow:var(--shadow);
+}
+.bf-h{
+  text-align:center;font-size:clamp(18px,2.1vw,26px);
+  text-transform:uppercase;letter-spacing:.005em;
+}
+.bf-h span{color:var(--cyan-ink)}
+.bf-list{
+  list-style:none;margin:clamp(24px,3vw,38px) 0 0;padding:0;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:28px 0;
+}
+/* five items never divide evenly into two or three columns, so the last row
+   is widened to fill instead of leaving a gap beside a lone item */
+@media(max-width:559px){.bf-list li:nth-child(5){grid-column:1/-1}}
+@media(min-width:560px) and (max-width:899px){
+  .bf-list{grid-template-columns:repeat(6,1fr)}
+  .bf-list li{grid-column:span 2}
+  .bf-list li:nth-child(4),.bf-list li:nth-child(5){grid-column:span 3}
+}
+@media(min-width:900px){
+  .bf-list{grid-template-columns:repeat(5,1fr)}
+  .bf-list li:not(:last-child){border-right:1px solid var(--line-soft)}
+}
+.bf-list li{
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  text-align:center;gap:15px;padding:0 12px;
+}
+.bf-i{color:var(--blue);display:grid;place-items:center;flex:none}
+.bf-list b{
+  font-family:var(--f-display);font-weight:600;font-size:15.5px;
+  color:var(--ink);line-height:1.35;letter-spacing:-.01em;
+}
+
+/* ==========================================================================
+   MAKER BAND — who builds APIQR, and the numbers behind it
+   ========================================================================== */
+.maker{
+  background:var(--blue-deep);color:#C3D2EA;position:relative;overflow:hidden;
+  padding:clamp(54px,6.4vw,96px) 0;
+}
+.maker::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(62% 100% at 50% 0%,rgba(0,175,239,.18),transparent 70%);
+}
+.maker .wrap{position:relative;z-index:1}
+
+.maker-rule{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2.4vw,26px)}
+.mr-line{
+  position:relative;flex:1 1 0;max-width:220px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,175,239,.7));
+}
+.mr-line::after{
+  content:"";position:absolute;right:-1px;top:-2.5px;width:6px;height:6px;
+  border-radius:50%;background:var(--cyan);
+}
+.maker-rule .mr-line:last-child{transform:scaleX(-1)}
+.mr-t{
+  font-family:var(--f-display);font-weight:700;color:#fff;text-align:center;
+  font-size:clamp(17px,2.1vw,27px);letter-spacing:-.02em;line-height:1.25;
+}
+.mr-t b{color:var(--yellow);font-weight:700}
+.maker-sub{
+  text-align:center;margin-top:11px;color:#9FB4D6;
+  font-size:clamp(15px,1.5vw,18px);
+}
+
+.maker-stats{
+  margin-top:clamp(28px,3.4vw,46px);
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.15);border-radius:12px;overflow:hidden;
+}
+@media(max-width:619px){.ms:nth-child(5){grid-column:1/-1}}
+@media(min-width:620px) and (max-width:1059px){
+  .maker-stats{grid-template-columns:repeat(6,1fr)}
+  .ms{grid-column:span 2}
+  .ms:nth-child(4),.ms:nth-child(5){grid-column:span 3}
+}
+@media(min-width:1060px){.maker-stats{grid-template-columns:repeat(5,1fr)}}
+.ms{
+  background:var(--blue-deep);
+  padding:clamp(22px,2.4vw,32px) clamp(14px,1.7vw,24px);
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+}
+.ms-i{color:var(--cyan);display:grid;place-items:center;flex:none;margin-bottom:4px}
+.ms b{
+  font-family:var(--f-display);font-weight:700;color:#fff;
+  font-size:var(--fs-hp);letter-spacing:-.025em;line-height:1.05;
+}
+.ms > span:last-child{font-size:13.5px;color:#9FB4D6;line-height:1.45}
+
+/* ==========================================================================
+   THE PLATFORM — desktop screen with the phone output beside it
+   ========================================================================== */
+.pf-grid{display:grid;grid-template-columns:1fr;gap:clamp(40px,5vw,78px);align-items:center}
+@media(min-width:1000px){.pf-grid{grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr)}}
+
+/* the phone hangs off the bottom-right of the screen, so the stage reserves
+   room for it rather than letting it overlap the next block */
+.pf-stage{position:relative;padding:0 clamp(0px,3vw,44px) clamp(38px,5.5vw,66px) 0}
+.pf-screen{
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;
+  background:#fff;box-shadow:var(--shadow-lg);
+}
+.pf-screen img{width:100%;height:auto;display:block}
+.pf-phone{
+  position:absolute;right:0;bottom:0;width:clamp(104px,17%,172px);
+  border:5px solid #16233D;border-radius:18px;background:#16233D;
+  box-shadow:0 26px 52px -22px rgba(15,27,51,.62);overflow:hidden;
+}
+.pf-phone-screen{
+  border-radius:13px;overflow:hidden;background:#fff;
+  aspect-ratio:9/17.5;position:relative;
+}
+.pf-phone-screen img{
+  width:100%;height:auto;display:block;
+  animation:pfScroll 24s linear infinite alternate;
+}
+@keyframes pfScroll{from{transform:translateY(0)}to{transform:translateY(-26%)}}
+@media (prefers-reduced-motion:reduce){.pf-phone-screen img{animation:none}}
+
+.pf-body{margin-top:18px;font-size:16.5px}
+.pf-note{
+  margin-top:24px;display:flex;gap:12px;align-items:flex-start;
+  padding:16px 18px;background:var(--cyan-soft);border:1px solid var(--cyan-line);
+  border-radius:var(--r);font-size:15px;color:var(--ink);line-height:1.6;
+}
+.pf-note svg{color:var(--cyan-ink);flex:none;margin-top:3px}
+.pf-actions{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px}
+
+/* ==========================================================================
+   CAPABILITIES — the six things the platform does
+   ========================================================================== */
+.feats{
+  margin-top:clamp(34px,4vw,54px);
+  display:grid;grid-template-columns:1fr;gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+}
+@media(min-width:540px){.feats{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.feats{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1320px){.feats{grid-template-columns:repeat(6,1fr)}}
+.feat{
+  background:var(--surface);
+  padding:clamp(26px,2.6vw,34px) clamp(18px,1.8vw,24px);
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  transition:background-color .16s ease;
+}
+.feat:hover{background:var(--cyan-soft)}
+.feat-i{
+  width:56px;height:56px;border-radius:50%;flex:none;
+  background:var(--cyan-soft);color:var(--blue);display:grid;place-items:center;
+  transition:background-color .16s ease;
+}
+.feat:hover .feat-i{background:#fff}
+/* two lines' worth of room so the rules and body copy align across the row
+   even when one title wraps and its neighbours do not */
+.feat h3{font-size:16.5px;line-height:1.3;margin-top:18px;min-height:2.6em}
+.feat-rule{display:block;width:30px;height:2.5px;border-radius:2px;background:var(--cyan);margin:12px 0 14px}
+.feat p{font-size:14.5px;line-height:1.55}
+
+/* ==========================================================================
+   HOW APIQR WORKS — the six steps, and what a scan returns
+   ========================================================================== */
+.how-grid{
+  display:grid;grid-template-columns:1fr;gap:clamp(40px,5vw,72px);
+  align-items:start;margin-top:clamp(34px,4vw,54px);
+}
+@media(min-width:1000px){.how-grid{grid-template-columns:minmax(0,1fr) minmax(320px,430px);align-items:stretch}}
+
+/* the steps and the scan panel read as a pair, so they share a card idiom
+   and a height rather than leaving one column hanging short */
+.how-steps{
+  border:1px solid var(--line);border-radius:12px;background:var(--surface);
+  box-shadow:var(--shadow-sm);
+  padding:clamp(24px,2.8vw,38px) clamp(20px,2.4vw,34px);
+  display:flex;align-items:center;
+}
+/* the copy is short; centring the block keeps the card from reading as
+   half-empty on a wide screen */
+.how-steps > .flow{width:100%;max-width:640px;margin:0 auto}
+
+ol.flow{list-style:none;padding:0;margin:0}
+.flow-icons .flow-step{grid-template-columns:auto auto minmax(0,1fr);gap:16px}
+.flow-i{
+  width:40px;height:40px;border-radius:var(--r);flex:none;
+  background:var(--cyan-soft);border:1px solid var(--cyan-line);
+  color:var(--blue);display:grid;place-items:center;
+}
+@media(max-width:520px){
+  .flow-icons .flow-step{grid-template-columns:auto minmax(0,1fr)}
+  .flow-i{display:none}
+}
+.flow-tag{
+  margin:0 0 7px;font-family:var(--f-mono);font-size:11.5px;font-weight:600;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--cyan-ink);
+}
+
+.getpanel{
+  border:1px solid var(--line);border-radius:12px;background:var(--surface);
+  box-shadow:var(--shadow);padding:clamp(24px,2.6vw,34px);
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+/* a shorter window than the inner pages use: the panel has a heading, a
+   caption and a button to fit around it */
+.getpanel .phone-screen{height:min(52vh,430px)}
+/* the shared scanScroll keyframe is written against the 560px window the
+   inner pages use, so the shorter panel needs its own end position */
+@keyframes getScroll{
+  from{transform:translateY(0)}
+  to{transform:translateY(calc(-100% + min(52vh,430px)))}
+}
+.getpanel .phone-screen img{animation-name:getScroll}
+.getpanel h3{
+  font-family:var(--f-display);font-weight:700;font-size:17px;
+  color:var(--cyan-ink);margin-bottom:22px;
+}
+.getpanel .phone{max-width:288px}
+.getpanel .btn{margin-top:24px}
+
+/* ==========================================================================
+   DUO — who builds it, and how to see it
+   ========================================================================== */
+.duo{
+  display:grid;grid-template-columns:1fr;
+  border:1px solid var(--line);border-radius:12px;background:var(--surface);
+  box-shadow:var(--shadow);overflow:hidden;
+}
+@media(min-width:960px){.duo{grid-template-columns:1fr 1fr}}
+.duo-c{
+  padding:clamp(28px,3.3vw,50px);
+  display:flex;flex-direction:column;align-items:flex-start;
+  border-bottom:1px solid var(--line);
+}
+.duo-c:last-child{border-bottom:0}
+@media(min-width:960px){
+  .duo-c{border-bottom:0;border-right:1px solid var(--line)}
+  .duo-c:last-child{border-right:0}
+}
+.duo-k{
+  font-family:var(--f-mono);font-size:11.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--cyan-ink);
+}
+.duo-k::after{
+  content:"";display:block;width:34px;height:3px;border-radius:2px;
+  background:var(--yellow);margin-top:13px;
+}
+.duo-h{font-size:clamp(21px,2.4vw,30px);margin-top:22px;text-wrap:balance}
+.duo-brand{color:var(--cyan-ink)}
+.duo-c > p{margin-top:16px;font-size:16px}
+.duo-c strong{color:var(--ink);font-weight:600}
+.duo-c > p.duo-lede{font-size:17px;color:var(--ink);margin-top:14px}
+.duo-list{
+  list-style:none;margin:24px 0 0;padding:0;
+  display:flex;flex-direction:column;gap:13px;font-size:15.5px;
+}
+.duo-list li{display:flex;align-items:center;gap:12px}
+.duo-list svg{color:var(--cyan);flex:none}
+.duo-c .btn{margin-top:28px}
+.duo-link{
+  margin-top:auto;padding-top:28px;
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--f-display);font-weight:600;font-size:16px;
+  color:var(--cyan-ink);text-decoration:none;
+}
+.duo-link svg{transition:transform .16s ease}
+.duo-link:hover svg{transform:translateX(3px)}
+.duo-c > p.duo-meta{
+  margin-top:20px;display:flex;flex-wrap:wrap;gap:8px 18px;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);
+}
+.duo-meta span{display:flex;align-items:center;gap:7px}
+.duo-meta svg{color:var(--cyan);flex:none}
+
+/* ==========================================================================
+   GLOBAL SERIALIZATION EXPERIENCE
+   ========================================================================== */
+.globe{
+  margin-top:clamp(22px,2.5vw,34px);
+  background:var(--blue-deep);border-radius:12px;color:#C3D2EA;
+  padding:clamp(28px,3.2vw,44px) clamp(18px,2.8vw,40px);
+  position:relative;overflow:hidden;
+}
+.globe::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(70% 130% at 50% 0%,rgba(0,175,239,.17),transparent 70%);
+}
+.globe > *{position:relative;z-index:1}
+.globe-h{
+  display:flex;align-items:center;justify-content:center;gap:clamp(11px,2vw,22px);
+  font-family:var(--f-display);font-weight:700;color:#fff;text-align:center;
+  font-size:clamp(14.5px,1.7vw,20px);letter-spacing:.02em;text-transform:uppercase;
+}
+.gl-line{
+  position:relative;flex:1 1 0;max-width:150px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--yellow));
+}
+.gl-line::after{
+  content:"";position:absolute;right:-1px;top:-2.5px;width:6px;height:6px;
+  border-radius:50%;background:var(--yellow);
+}
+.globe-h .gl-line:last-child{transform:scaleX(-1)}
+.globe-sub{text-align:center;margin-top:10px;font-size:14.5px;color:#9FB4D6}
+
+.flags{
+  list-style:none;margin:clamp(22px,2.6vw,32px) 0 0;padding:0;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:24px 0;
+}
+@media(min-width:520px){.flags{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:1000px){
+  .flags{grid-template-columns:repeat(8,1fr)}
+  .flags li:not(:last-child){border-right:1px solid rgba(255,255,255,.15)}
+}
+.flags li{display:flex;flex-direction:column;align-items:center;gap:11px;padding:0 10px}
+.flag{
+  width:42px;height:28px;border-radius:3px;overflow:hidden;display:block;
+  background:#fff;box-shadow:0 2px 7px rgba(0,0,0,.4);
+}
+.flag svg{width:100%;height:100%;display:block}
+.flags b{font-family:var(--f-display);font-weight:600;font-size:14px;color:#fff}
+
+/* ==========================================================================
+   HOME FAQ — two columns of cards
+   Distinct from .faq (the single-column list the inner pages use), because
+   twelve questions in one column pushes the closing call to action off the
+   end of a very long page.
+   ========================================================================== */
+.faq-hl{color:var(--cyan-ink)}
+
+.qa{margin-top:clamp(34px,4vw,54px);display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:960px){
+  .qa{grid-template-columns:1fr 1fr;gap:14px clamp(20px,2.4vw,32px);align-items:start}
+}
+.qa-col{display:flex;flex-direction:column;gap:14px}
+
+.q{
+  border:1px solid var(--line);border-radius:10px;background:var(--surface);
+  box-shadow:var(--shadow-sm);overflow:hidden;
+  transition:border-color .16s ease,box-shadow .16s ease;
+}
+.q[open]{border-color:var(--cyan-line);box-shadow:var(--shadow)}
+.q > summary{
+  list-style:none;cursor:pointer;display:flex;align-items:flex-start;gap:14px;
+  padding:17px 52px 17px 18px;position:relative;
+  font-family:var(--f-display);font-weight:600;font-size:16px;
+  color:var(--ink);line-height:1.4;
+}
+.q > summary::-webkit-details-marker{display:none}
+/* a plus that loses its upright stroke when the card opens */
+.q > summary::after{
+  content:"";position:absolute;right:19px;top:23px;width:13px;height:13px;
+  background:
+    linear-gradient(var(--cyan-ink),var(--cyan-ink)) center/13px 2px no-repeat,
+    linear-gradient(var(--cyan-ink),var(--cyan-ink)) center/2px 13px no-repeat;
+}
+.q[open] > summary::after{
+  background:linear-gradient(var(--cyan-ink),var(--cyan-ink)) center/13px 2px no-repeat;
+}
+.q > summary:hover{color:var(--cyan-ink)}
+.q-n{
+  flex:none;width:28px;height:23px;display:grid;place-items:center;
+  border-radius:4px;background:var(--blue);color:#fff;margin-top:1px;
+  font-family:var(--f-mono);font-size:11.5px;font-weight:600;
+}
+.q[open] .q-n{background:var(--cyan-ink)}
+.q-a{padding:0 20px 20px 60px;font-size:15.5px;line-height:1.65}
+@media(max-width:480px){.q-a{padding-left:20px}}
+.q-a p + p{margin-top:12px}
+.q-a strong{color:var(--ink);font-weight:600}
+.q-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--f-display);font-weight:600;font-size:15px;
+  color:var(--cyan-ink);text-decoration:none;
+  border-bottom:2px solid var(--yellow);padding-bottom:2px;
+}
+.q-cta:hover{border-bottom-color:var(--cyan)}
+
+/* the three packaging levels, inside answer 07 */
+.pklv{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+.pk{
+  border:1px solid var(--line);border-left:3px solid var(--cyan);
+  border-radius:var(--r);background:var(--ground-alt);padding:14px 16px;
+}
+.pk-n{
+  display:block;margin-bottom:5px;font-family:var(--f-mono);font-size:10.5px;
+  font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--blue);
+}
+.pk p{font-size:14.5px;line-height:1.5}
+
+/* the SSCC structure, inside answer 09 */
+.q-a p.sscc-lbl{
+  margin-top:18px;font-family:var(--f-mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+}
+.q-a p.sscc{margin-top:9px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.sscc span{
+  font-family:var(--f-mono);font-size:11.5px;font-weight:600;letter-spacing:.03em;
+  background:var(--cyan-soft);border:1px solid var(--cyan-line);color:var(--cyan-ink);
+  padding:6px 10px;border-radius:var(--r);
+}
+.sscc i{font-style:normal;font-weight:600;color:var(--muted)}
+
+/* ==========================================================================
+   CLOSING CTA — additions for the home page variant
+   ========================================================================== */
+.cta-icon{
+  width:58px;height:58px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(0,175,239,.16);border:1px solid rgba(0,175,239,.42);
+  color:var(--cyan);margin-bottom:22px;
+}
+.cta p.cta-alt{
+  max-width:none;margin-top:24px;
+  display:flex;flex-wrap:wrap;gap:12px 34px;
+}
+.cta-alt a{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--f-display);font-weight:600;font-size:15.5px;
+  color:#fff;text-decoration:none;
+  border-bottom:2px solid rgba(254,215,91,.5);padding-bottom:3px;
+}
+.cta-alt a:hover{border-bottom-color:var(--yellow)}
+.cta-alt svg{color:var(--yellow);flex:none}
 
 /* ==========================================================================
    REVEAL
