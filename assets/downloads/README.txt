@@ -3,6 +3,7 @@ Place the following files here before launch:
   gsr-20e-api-qr-code-guideline.pdf   The Gazette of India notification
                                       (CG-DL-E-19012022-232768, 18 Jan 2022).
                                       Linked ungated from resources.html.
+                                      IN PLACE - the official 3-page PDF.
 
   apiqr-brochure.pdf                  APIQR product brochure. Gated - delivered
                                       by email after an enquiry.

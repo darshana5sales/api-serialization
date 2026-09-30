@@ -134,7 +134,12 @@ added, re-check that at 1265×575 before shipping.
       posts nowhere. This is the site's primary conversion path.
 - [ ] **Placeholder blocks are visible page content**, not comments, on
       `about.html` (client logo strip, three testimonial cards reading
-      "Awaiting customer approval") and `resources.html`. Fill or remove.
+      "Awaiting customer approval"). Fill or remove.
+- [ ] **Resources page links waiting on content.** There is no blog yet, so the
+      two "Read article" buttons and "Explore all articles" point at existing
+      pages, and "Learn about SSCC" points at `gsr-20e-api-qr-code.html#sscc`
+      until the client's SSCC & GTIN-14 article arrives. Each is marked with an
+      HTML comment in `_src/pages/resources.html`.
 - [ ] **Phone number** `+91 90990 00000` appears in the topbar, footer and
       contact page and reads as a placeholder.
 - [ ] **Install count** is `300+` here but the brief says `250+` elsewhere —
