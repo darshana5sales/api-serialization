@@ -24,6 +24,7 @@ NAV_KEYS = {
     "regulation": "A_REG",
     "software": "A_SW",
     "resources": "A_RES",
+    "blog": "A_BLOG",
     "about": "A_ABOUT",
 }
 

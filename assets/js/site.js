@@ -245,6 +245,51 @@
     });
   }
 
+  /* ---------- post-scan phone screens ----------
+     The CSS keyframes glide the screenshot by fractional pixels, which
+     resamples its small text on every frame and blurs it. This runs the
+     same slow there-and-back scroll, stepped in whole device pixels. */
+  var screens = document.querySelectorAll(".phone-screen, .pf-phone-screen");
+  if (screens.length && !reduce && "IntersectionObserver" in window) {
+    var live = [];
+    var running = false;
+    screens.forEach(function (scr) {
+      var img = scr.querySelector("img");
+      if (!img) return;
+      var dur = parseFloat(getComputedStyle(img).animationDuration) * 1000 || 26000;
+      scr.classList.add("px-scroll");
+      live.push({ scr: scr, img: img, dur: dur, on: false, t: 0, last: 0, y: -1 });
+    });
+    var tick = function (now) {
+      var dpr = window.devicePixelRatio || 1;
+      var any = false;
+      live.forEach(function (s) {
+        if (!s.on) { s.last = 0; return; }
+        any = true;
+        // only time spent on screen counts, so each scroll starts from the top
+        if (s.last) s.t += now - s.last;
+        s.last = now;
+        var dist = s.img.offsetHeight - s.scr.clientHeight;
+        if (dist <= 0) return;
+        var c = (s.t % (2 * s.dur)) / s.dur;
+        var p = c < 1 ? c : 2 - c;
+        var y = Math.round(p * dist * dpr) / dpr;
+        if (y !== s.y) {
+          s.y = y;
+          s.img.style.transform = "translateY(" + -y + "px)";
+        }
+      });
+      if (any) requestAnimationFrame(tick); else running = false;
+    };
+    var so = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        live.forEach(function (s) { if (s.scr === e.target) s.on = e.isIntersecting; });
+      });
+      if (!running) { running = true; requestAnimationFrame(tick); }
+    });
+    live.forEach(function (s) { so.observe(s.scr); });
+  }
+
   /* ---------- reveal on scroll ---------- */
   var revealables = document.querySelectorAll(".reveal");
   var bars = document.querySelector(".bars");

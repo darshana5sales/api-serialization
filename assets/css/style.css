@@ -171,12 +171,15 @@ section{padding:clamp(64px,8vw,132px) 0}
 .brand-mark{width:40px;height:40px;display:block;flex:none}
 .brand-text{display:flex;flex-direction:column;line-height:1}
 .brand-name{font-family:var(--f-display);font-weight:700;font-size:20px;color:var(--ink);letter-spacing:-.02em}
-.brand-sub{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.brand-sub{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:4px;line-height:1.3;white-space:nowrap}
+/* The full company name is too long to sit on one line beside the nav until
+   the header has real room, so below that it breaks after "Aseptic". */
+@media(max-width:1279px){.site-header .brand-sub-2{display:block}}
 
 .nav{display:flex;align-items:center;gap:30px}
 .nav a{
   font-family:var(--f-display);font-size:15.5px;font-weight:500;color:var(--ink);
-  text-decoration:none;padding:6px 0;position:relative;
+  text-decoration:none;padding:6px 0;position:relative;white-space:nowrap;
 }
 .nav a::after{
   content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
@@ -185,15 +188,20 @@ section{padding:clamp(64px,8vw,132px) 0}
 .nav a:hover::after,.nav a[aria-current="page"]::after{transform:scaleX(1)}
 .header-cta{display:flex;align-items:center;gap:14px}
 @media(max-width:1040px){.nav{display:none}}
+/* six links plus the two-line brand only just fit above the collapse point */
+@media(min-width:1041px) and (max-width:1199px){.nav{gap:22px}}
 @media(max-width:520px){.header-cta .btn{padding:11px 16px;font-size:14.5px}}
 /* on a 390px screen the brand, the call to action and the menu button add up
    to more than the gutter leaves, and the button label wraps onto two lines */
 @media(max-width:430px){
   .site-header .wrap{gap:12px}
   .header-cta{gap:9px}
-  .header-cta .btn{padding:10px 13px;font-size:13.5px}
-  .brand-sub{white-space:nowrap}
+  .header-cta .btn{padding:10px 13px;font-size:13.5px;white-space:nowrap}
+  .site-header .brand{gap:9px}
+  .site-header .brand-sub{letter-spacing:.07em}
 }
+/* below 375 there is no room for a one-line label beside the full company name */
+@media(max-width:374px){.header-cta .btn{white-space:normal}}
 
 .nav-toggle{
   display:none;background:none;border:1.5px solid var(--line);border-radius:var(--r);
@@ -304,12 +312,24 @@ section{padding:clamp(64px,8vw,132px) 0}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
 .hero-actions .btn-primary{box-shadow:0 14px 30px -16px rgba(28,59,125,.75)}
 .hero-actions .btn-primary:hover{transform:translateY(-1px)}
+/* the three reassurances answer the objections that stall a demo booking,
+   so each gets an icon tile and ink-weight text rather than muted small print */
 .hero-assure{
-  display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:24px;
-  font-size:14px;color:var(--muted);
+  list-style:none;padding:0;
+  display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:24px;
+  font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.3;
 }
-.hero-assure span{display:flex;align-items:center;gap:7px}
-.hero-assure svg{color:var(--cyan);flex:none}
+.hero-assure li{display:flex;align-items:center;gap:9px}
+/* side by side, three equal columns: an item that runs out of room wraps its
+   own text rather than dropping the third item onto a row by itself */
+@media(min-width:600px){
+  .hero-assure{display:grid;grid-template-columns:repeat(3,minmax(0,max-content));gap:12px 20px}
+}
+.ha-ico{
+  width:30px;height:30px;flex:none;display:grid;place-items:center;
+  border-radius:var(--r);background:var(--cyan-soft);color:var(--cyan-ink);
+  border:1px solid #CDEFFB;
+}
 
 /* ---------- proof band, directly under the hero ----------
    These were inside the hero. On a 1280px laptop that put twelve separate
@@ -512,6 +532,8 @@ section{padding:clamp(64px,8vw,132px) 0}
 }
 @keyframes scanScroll{from{transform:translateY(0)}to{transform:translateY(calc(-100% + min(64vh,560px)))}}
 @media (prefers-reduced-motion:reduce){.phone-screen img{animation:none}}
+/* site.js takes over the scroll and steps it in whole pixels so the text stays sharp */
+.px-scroll img{animation:none !important}
 .phone-cap{
   text-align:center;margin-top:18px;font-family:var(--f-mono);font-size:11px;
   letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
@@ -833,13 +855,7 @@ body.lb-open{overflow:hidden}
   background:rgba(255,255,255,.15);
   border:1px solid rgba(255,255,255,.15);border-radius:12px;overflow:hidden;
 }
-@media(max-width:619px){.ms:nth-child(5){grid-column:1/-1}}
-@media(min-width:620px) and (max-width:1059px){
-  .maker-stats{grid-template-columns:repeat(6,1fr)}
-  .ms{grid-column:span 2}
-  .ms:nth-child(4),.ms:nth-child(5){grid-column:span 3}
-}
-@media(min-width:1060px){.maker-stats{grid-template-columns:repeat(5,1fr)}}
+@media(min-width:900px){.maker-stats{grid-template-columns:repeat(4,1fr)}}
 .ms{
   background:var(--blue-deep);
   padding:clamp(22px,2.4vw,32px) clamp(14px,1.7vw,24px);
@@ -882,7 +898,9 @@ body.lb-open{overflow:hidden}
 @keyframes pfScroll{from{transform:translateY(0)}to{transform:translateY(-26%)}}
 @media (prefers-reduced-motion:reduce){.pf-phone-screen img{animation:none}}
 
+.pf-intro{max-width:none;text-wrap:pretty}
 .pf-body{margin-top:18px;font-size:16.5px}
+.pf-body strong{color:var(--ink);font-weight:600;white-space:nowrap}
 .pf-note{
   margin-top:24px;display:flex;gap:12px;align-items:flex-start;
   padding:16px 18px;background:var(--cyan-soft);border:1px solid var(--cyan-line);
@@ -965,19 +983,24 @@ ol.flow{list-style:none;padding:0;margin:0}
 }
 /* a shorter window than the inner pages use: the panel has a heading, a
    caption and a button to fit around it */
-.getpanel .phone-screen{height:min(52vh,430px)}
+/* tied to the viewport height it dropped to ~300px on 720px-tall laptops,
+   so it has a floor; the panel is stretched to the step list beside it anyway */
+.getpanel{--get-h:clamp(390px,60vh,430px)}
+.getpanel .phone-screen{height:var(--get-h)}
 /* the shared scanScroll keyframe is written against the 560px window the
    inner pages use, so the shorter panel needs its own end position */
 @keyframes getScroll{
   from{transform:translateY(0)}
-  to{transform:translateY(calc(-100% + min(52vh,430px)))}
+  to{transform:translateY(calc(-100% + var(--get-h)))}
 }
 .getpanel .phone-screen img{animation-name:getScroll}
 .getpanel h3{
   font-family:var(--f-display);font-weight:700;font-size:17px;
   color:var(--cyan-ink);margin-bottom:22px;
 }
-.getpanel .phone{max-width:288px}
+/* 310 keeps the scan text legible at 1x; the srcset in index.html is sized
+   to its 288px screen */
+.getpanel .phone{max-width:310px}
 .getpanel .btn{margin-top:24px}
 
 /* ==========================================================================

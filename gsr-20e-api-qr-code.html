@@ -30,7 +30,7 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
 <!-- per-page head extras (LCP preloads etc.) -->
-<link rel="preload" as="image" href="assets/img/apiqr-gsr20e-labelled-drum.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/apiqr-gsr20e-hero.webp" imagesrcset="assets/img/apiqr-gsr20e-hero-1120.webp 1120w, assets/img/apiqr-gsr20e-hero.webp 1624w" imagesizes="(min-width: 600px) 560px, 100vw" fetchpriority="high">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -149,7 +149,7 @@
            width="110" height="110" decoding="async">
       <span class="brand-text">
         <span class="brand-name">APIQR</span>
-        <span class="brand-sub">by URL Aseptic</span>
+        <span class="brand-sub">by URL Aseptic <span class="brand-sub-2">Automation Inc.</span></span>
       </span>
     </a>
 
@@ -158,6 +158,7 @@
       <a href="gsr-20e-api-qr-code.html" aria-current="page">The Regulation</a>
       <a href="api-serialization-software.html">The Platform</a>
       <a href="resources.html">Resources</a>
+      <a href="blog.html">Blog</a>
       <a href="about.html">About</a>
     </nav>
 
@@ -177,6 +178,7 @@
       <li><a href="gsr-20e-api-qr-code.html">The Regulation</a></li>
       <li><a href="api-serialization-software.html">The Platform</a></li>
       <li><a href="resources.html">Resources</a></li>
+      <li><a href="blog.html">Blog</a></li>
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -219,9 +221,11 @@
 
       <div class="ph-art">
         <figure class="ph-label">
-          <img src="assets/img/apiqr-gsr20e-labelled-drum.jpg"
-               width="941" height="628" fetchpriority="high" decoding="async"
-               alt="A blue HDPE API drum of Ropivacaine Hydrochloride USP on a production floor, carrying a G.S.R. 20(E)-compliant label with material code, GTIN, batch number, manufacturing and expiry dates, container number, SSCC, weights, licence number, storage conditions and a QR code, beside a panel noting that G.S.R. 20(E) under the Drugs (Amendment) Rules, 2022 has been in force since 1 January 2023.">
+          <img src="assets/img/apiqr-gsr20e-hero.webp"
+               srcset="assets/img/apiqr-gsr20e-hero-1120.webp 1120w, assets/img/apiqr-gsr20e-hero.webp 1624w"
+               sizes="(min-width: 600px) 560px, 100vw"
+               width="1624" height="968" fetchpriority="high" decoding="async"
+               alt="A white HDPE API container of Ropivacaine Hydrochloride USP in a pharmaceutical plant, beside a dish of white powder, carrying a G.S.R. 20(E)-compliant label with material code, GTIN, batch number, manufacturing and expiry dates, container number, SSCC, batch quantity, weights, licence number, storage and caution text, the manufacturer's address and a QR code. A panel beside it notes that G.S.R. 20(E) under the Drugs (Amendment) Rules, 2022, from the Ministry of Health and Family Welfare, has been in force since 1 January 2023.">
         </figure>
         <ul class="ladder">
           <li>Notified 18 Jan 2022</li>
@@ -366,18 +370,19 @@
 
     <div id="levels" class="levels reveal">
       <h3 class="levels-h">What “each packaging level” means</h3>
+      <p class="levels-intro">“Each packaging level” refers to the different levels at which an API or Bulk Drug may be packaged, handled or transported.</p>
       <div class="levels-grid">
         <div class="lv">
           <span class="lv-n">01 — Primary pack</span>
-          <p>The container in direct contact with the material: the drum, the HDPE container, the fibre drum with its liner.</p>
+          <p>The individual packaging in direct contact with the API material.</p>
         </div>
         <div class="lv">
           <span class="lv-n">02 — Secondary pack</span>
-          <p>Where material is grouped or over-packed before shipment, and the group itself moves as one unit.</p>
+          <p>A packaging level used to group or protect one or more primary packs.</p>
         </div>
         <div class="lv">
-          <span class="lv-n">03 — Tertiary / shipper</span>
-          <p>The outermost unit that moves through the logistics chain, and the one most sites already label today.</p>
+          <span class="lv-n">03 — Tertiary / shipper pack</span>
+          <p>The outer packaging unit used for storage, handling or transportation.</p>
         </div>
       </div>
     </div>
@@ -479,21 +484,28 @@
       <div class="split-body">
         <div class="note-box">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          <span>
-            <b>Particular 09 is where most manual approaches break</b>
-            SSCC codes have to be unique, sequential within an allocated range, and never
-            reissued. That is manageable for one batch on a spreadsheet and unmanageable
-            across products, sites and years — which is why SSCC ranges are normally
-            allocated and controlled centrally by the serialization system.
-          </span>
+          <div class="note-c">
+            <b>Particular 09: Serial Shipping Container Code (SSCC)</b>
+            <span class="note-sub">Requires controlled allocation and management</span>
+            <p>
+              Each SSCC uniquely identifies a logistic unit and should be assigned through a
+              controlled process in accordance with GS1 rules. It should not be reallocated within
+              the GS1-specified period, while sequential allocation can simplify management.
+            </p>
+            <p>
+              Centralized SSCC allocation through a serialization system helps prevent duplication
+              or unintended reuse and supports consistent number management.
+            </p>
+          </div>
         </div>
       </div>
       <div class="split-aside">
         <div class="figcard">
-          <b>11 / 11</b>
+          <b>11 / 11 &amp; Beyond</b>
           <span>
-            Every particular is built into the APIQR label template and the QR payload, so a
-            field cannot be forgotten on a batch.
+            Every mandatory particular is built into the APIQR label template and encoded in the
+            QR code, so no required field is missed — with connected traceability beyond the
+            QR code.
           </span>
         </div>
       </div>
@@ -582,6 +594,8 @@
           <div class="phone">
             <div class="phone-screen">
               <img src="assets/img/qrscan-view.png"
+                 srcset="assets/img/qrscan-120.webp 120w, assets/img/qrscan-150.webp 150w, assets/img/qrscan-180.webp 180w, assets/img/qrscan-210.webp 210w, assets/img/qrscan-240.webp 240w, assets/img/qrscan-280.webp 280w, assets/img/qrscan-320.webp 320w, assets/img/qrscan-370.webp 370w, assets/img/qrscan-430.webp 430w, assets/img/qrscan-500.webp 500w, assets/img/qrscan-580.webp 580w, assets/img/qrscan-680.webp 680w, assets/img/qrscan-800.webp 800w"
+                 sizes="222px"
                    width="1080" height="2934" loading="lazy" decoding="async"
                    alt="A phone showing the result of scanning an APIQR label: manufacturer name and address, GTIN, product name, brand name, batch number, batch size, manufacturing and expiry dates, ERP code, manufacturing and import licence numbers, SSCC, gross, tare and net weights, storage conditions and CAS number.">
             </div>
@@ -667,7 +681,7 @@
               <span class="sc-t"><b>Audit records can be retrieved on demand</b><span>Records show who created, approved, printed or reprinted labels, with timestamps.</span></span>
             </label></li>
           </ol>
-          <p class="sc-foot">The checkboxes are for your own use — nothing is stored or sent.</p>
+          <p class="sc-foot">The checkboxes are for your own review — nothing is stored or sent.</p>
         </div>
       </div>
 
@@ -778,7 +792,7 @@
                width="110" height="110" decoding="async" loading="lazy">
           <span class="brand-text">
             <span class="brand-name">APIQR</span>
-            <span class="brand-sub">by URL Aseptic Automation</span>
+            <span class="brand-sub">by URL Aseptic <span class="brand-sub-2">Automation Inc.</span></span>
           </span>
         </a>
         <p>
