@@ -630,6 +630,28 @@ section{padding:clamp(64px,8vw,132px) 0}
 .lb-close:hover{background:var(--cyan);border-color:var(--cyan);color:var(--blue)}
 .lb-close:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
 body.lb-open{overflow:hidden}
+.lb-nav{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:1;
+  width:50px;height:50px;border-radius:50%;cursor:pointer;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;
+  display:grid;place-items:center;transition:background-color .15s ease,border-color .15s ease,opacity .15s ease;
+}
+.lb-prev{left:clamp(8px,1.6vw,24px)}
+.lb-next{right:clamp(8px,1.6vw,24px)}
+.lb-nav:hover:not(:disabled){background:var(--cyan);border-color:var(--cyan);color:var(--blue)}
+.lb-nav:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+/* at the first or last screen the arrow stays in place, dimmed, so the layout doesn't jump */
+.lb-nav:disabled{opacity:.25;cursor:default}
+.lb-nav[hidden],.lb-count[hidden]{display:none}
+.lb-count{
+  margin:0;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:#C3D2EA;
+}
+/* keep the arrows clear of the image on narrow screens */
+@media(min-width:701px){.lb-fig img{max-width:min(1400px,calc(100vw - 160px))}}
+@media(max-width:700px){
+  .lb-nav{top:auto;bottom:clamp(12px,3vw,20px);transform:none;width:44px;height:44px}
+  .lb{padding-bottom:76px}
+}
 
 /* ==========================================================================
    MODULES

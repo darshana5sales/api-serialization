@@ -156,16 +156,31 @@
         '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
         'stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
       '</button>' +
-      '<figure class="lb-fig"><img alt=""><figcaption class="lb-cap"></figcaption></figure>';
+      '<button class="lb-nav lb-prev" type="button" aria-label="Previous image">' +
+        '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+        'stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>' +
+      '</button>' +
+      '<button class="lb-nav lb-next" type="button" aria-label="Next image">' +
+        '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+        'stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>' +
+      '</button>' +
+      '<figure class="lb-fig"><img alt=""><figcaption class="lb-cap"></figcaption></figure>' +
+      '<p class="lb-count" aria-live="polite"></p>';
     document.body.appendChild(lb);
 
     var lbImg   = lb.querySelector("img");
     var lbCap   = lb.querySelector(".lb-cap");
     var lbClose = lb.querySelector(".lb-close");
+    var lbPrev  = lb.querySelector(".lb-prev");
+    var lbNext  = lb.querySelector(".lb-next");
+    var lbCount = lb.querySelector(".lb-count");
     var lastFocus = null;
+    // the screens in one tile list or gallery can be stepped through in place;
+    // it stops at either end rather than wrapping round
+    var group = [];
+    var at = 0;
 
-    function open(img) {
-      lastFocus = document.activeElement;
+    function show(img) {
       lbImg.src = img.currentSrc || img.src;
       lbImg.alt = img.alt || "";
       // caption, best source first: the tab panel's own heading, then the
@@ -187,6 +202,30 @@
       } else {
         lbCap.textContent = img.alt || "";
       }
+      at = group.indexOf(img);
+      var many = group.length > 1;
+      lbPrev.hidden = lbNext.hidden = lbCount.hidden = !many;
+      lbPrev.disabled = at <= 0;
+      lbNext.disabled = at >= group.length - 1;
+      lbCount.textContent = many ? (at + 1) + " / " + group.length : "";
+    }
+
+    function step(d) {
+      var to = group[at + d];
+      if (!to) return;
+      show(to);
+      // don't leave focus on an arrow that has just been switched off
+      var btn = d < 0 ? lbPrev : lbNext;
+      if (document.activeElement === btn && btn.disabled) (d < 0 ? lbNext : lbPrev).focus();
+    }
+
+    function open(img) {
+      lastFocus = document.activeElement;
+      var set = img.closest(".tiles, .gallery");
+      group = set
+        ? Array.prototype.filter.call(zoomables, function (z) { return set.contains(z); })
+        : [img];
+      show(img);
       lb.hidden = false;
       document.body.classList.add("lb-open");
       lbClose.focus();
@@ -234,14 +273,23 @@
     });
 
     lbClose.addEventListener("click", close);
+    lbPrev.addEventListener("click", function () { step(-1); });
+    lbNext.addEventListener("click", function () { step(1); });
     lb.addEventListener("click", function (e) {
       if (e.target === lb || e.target === lb.querySelector(".lb-fig")) close();
     });
     document.addEventListener("keydown", function (e) {
       if (lb.hidden) return;
       if (e.key === "Escape") { close(); return; }
-      // simple focus trap: the close button is the only control in here
-      if (e.key === "Tab") { e.preventDefault(); lbClose.focus(); }
+      if (e.key === "ArrowLeft")  { e.preventDefault(); step(-1); return; }
+      if (e.key === "ArrowRight") { e.preventDefault(); step(1); return; }
+      // focus trap: cycle through whichever controls are usable right now
+      if (e.key === "Tab") {
+        e.preventDefault();
+        var ctl = [lbClose, lbPrev, lbNext].filter(function (b) { return !b.hidden && !b.disabled; });
+        var i = ctl.indexOf(document.activeElement);
+        ctl[(i + (e.shiftKey ? -1 : 1) + ctl.length) % ctl.length].focus();
+      }
     });
   }
 
