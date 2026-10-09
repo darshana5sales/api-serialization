@@ -1,8 +1,8 @@
 ---
 {
-  "title": "API Serialization FAQ — QR Code Mandate Explained",
-  "ogtitle": "API Serialization FAQ",
-  "desc": "Twelve straight answers on API serialization in India — the QR mandate, what the code must carry, GTIN and SSCC standards, and implementation time.",
+  "title": "API Serialization FAQ | G.S.R. 20(E), QR Codes & API Traceability | APIQR",
+  "ogtitle": "API Serialization FAQ | G.S.R. 20(E), QR Codes & API Traceability",
+  "desc": "Clear answers on API serialization, G.S.R. 20(E), QR-code requirements, packaging levels, SSCC, software readability and the APIQR platform.",
   "nav": "resources",
   "crumbs": [
     [
@@ -26,10 +26,10 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is an API?",
+          "name": "What is an API (Active Pharmaceutical Ingredient)?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "An Active Pharmaceutical Ingredient is the active component of a formulation such as a tablet, capsule, cream or injectable — in short, the raw material used to manufacture medicines. In Indian industry usage it is also referred to as a bulk drug."
+            "text": "An Active Pharmaceutical Ingredient (API) is the active substance responsible for the intended effect of a pharmaceutical product. APIs are used to manufacture medicines such as tablets, capsules, creams, injectables and other pharmaceutical products. API is also commonly referred to as a Bulk Drug."
           }
         },
         {
@@ -37,7 +37,31 @@
           "name": "What is API serialization?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Serialization is the process of giving a product a unique identity through a standard set of details such as GTIN, SSCC, SKU, batch number and manufacturing and expiry dates, which makes it uniquely identifiable and traceable through the supply chain. API serialization applies that to Active Pharmaceutical Ingredients so a pack can be tracked and traced to its location, or to where it has been."
+            "text": "API serialization is the process of assigning a unique identity to each API (Bulk Drug) pack and linking it with relevant product, batch and packaging information. This enables each pack to be identified, tracked and traced throughout the supply chain."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is API serialization important?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "API serialization provides a more precise way to identify individual API (Bulk Drug) packs rather than relying only on product or batch information. It helps manufacturers and supply-chain stakeholders identify, track and trace packs throughout the supply chain, providing visibility into individual packs and their associated product and batch information. It also supports product traceability and helps meet applicable regulatory requirements, including G.S.R. 20(E). It can support: Individual pack identification; Product and batch traceability; Faster access to associated information; Supply-chain visibility; More targeted investigation and response; Controlled serialization and labelling workflows."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is G.S.R. 20(E) — Drugs (Amendment) Rules, 2022?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "G.S.R. 20(E) is a Government of India notification that introduced the Drugs (Amendment) Rules, 2022, further amending the Drugs Rules, 1945. It was issued by the Ministry of Health and Family Welfare on 18 January 2022. It requires APIs (Bulk Drugs) manufactured or imported in India to carry a Quick Response (QR) code on the label at each level of packaging. The QR code must contain specified information that can be read by a software application to facilitate tracking and tracing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the requirement apply to imported APIs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The QR-code requirement applies to applicable APIs and Bulk Drugs manufactured or imported in India. Foreign API manufacturers supplying APIs or Bulk Drugs to the Indian market should therefore consider the applicable Indian QR-code labelling and information requirements under G.S.R. 20(E)."
           }
         },
         {
@@ -45,79 +69,79 @@
           "name": "Is a QR code mandatory on API labels in India?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Under guideline G.S.R. 20(E), notified by the Ministry of Health and Family Welfare on 18 January 2022 under gazette number CG-DL-E-19012022-232768 and in force since 1 January 2023, every API manufactured or imported in India must carry a QR code on its label at each packaging level."
+            "text": "Yes. Under G.S.R. 20(E) — The Drugs (Amendment) Rules, 2022, applicable Active Pharmaceutical Ingredients (APIs) or Bulk Drugs manufactured or imported in India must carry a QR code on the label at each packaging level. The QR code is required to store the specified information in a form that can be read by a software application for tracking and tracing."
           }
         },
         {
           "@type": "Question",
-          "name": "What information must the QR code on an API pack contain?",
+          "name": "What does “each packaging level” mean?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Eleven particulars: unique product identification code, name of the API, brand name if any, name and address of the manufacturer, batch number, batch size, date of manufacturing, date of expiry or retesting, serial shipping container code, manufacturing or import licence number, and any special storage conditions required."
+            "text": "The notification states that API and Bulk Drug labels must carry a QR code containing the specified information at “each level of packaging.” “Each packaging level” refers to the different levels at which an API or Bulk Drug may be packaged, handled or transported. The requirement should therefore be considered across the complete packaging structure, not only on the outer shipping pack. Primary pack: the individual packaging in direct contact with the API material. Secondary pack: a packaging level used to group or protect one or more primary packs. Tertiary / shipper pack: the outer packaging unit used for storage, handling or transportation."
           }
         },
         {
           "@type": "Question",
-          "name": "Does the QR code go on every packaging level?",
+          "name": "What information must the API QR code contain?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The guideline requires a QR code on the label at each packaging level — primary, secondary and tertiary. Each is a distinct physical unit that can be separated from the others, so each needs its own identity."
+            "text": "The QR code must contain the 11 mandated particulars specified under the requirement. These include product identification code, API name, brand name, manufacturer details, batch information, manufacturing and expiry or retesting dates, Serial Shipping Container Code (SSCC), applicable licence information and special storage conditions where required."
           }
         },
         {
           "@type": "Question",
-          "name": "What is the need for API serialization?",
+          "name": "What is an SSCC (Serial Shipping Container Code)?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Drug counterfeiting is a global problem, and gaps in an unserialized supply chain are where fake or low-quality material enters. Serialization guarantees API quality and safety, gives complete supply chain visibility, allows the source of a problem to be identified quickly, and helps every member of the chain with inventory management, verification and recall."
+            "text": "SSCC (Serial Shipping Container Code) is an 18-digit unique number used to identify an individual logistics or shipping unit, such as an API container or shipment pack. In API serialization, it helps uniquely identify an individual pack and link it with relevant product and traceability information. SSCC structure: Extension digit + GS1 company prefix + Serial reference + Check digit"
           }
         },
         {
           "@type": "Question",
-          "name": "How long does implementation take?",
+          "name": "What does “readable by a software application” mean?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Typically four to five working days from kick-off to the first compliant printed label. APIQR is cloud-based, so there is nothing to procure and no change to the packing line."
+            "text": "The QR code is not intended simply to be a visual code printed on the label. The information encoded in the QR code must be machine-readable by a software application so that the associated information can be accessed to facilitate tracking and tracing. In a serialization workflow, the software application connects the encoded identity with the relevant product, batch, packaging and traceability records."
           }
         },
         {
           "@type": "Question",
-          "name": "Is APIQR cloud-based or installed on site?",
+          "name": "What happens when an API QR code is scanned?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Fully cloud-based. You log in through a standard web browser using your company code, username and password and operate it from any location. There are no on-premise servers and no heavy IT setup."
+            "text": "When the QR code is scanned using a compatible software application, the encoded information can be read and associated product and pack details can be accessed. Depending on the information stored and the system used, this can support: Product identification; Batch identification; Pack or container identification; Manufacturing and expiry information; Traceability information; Verification and record access."
           }
         },
         {
           "@type": "Question",
-          "name": "What happens after a batch is approved?",
+          "name": "How is API serialization implemented?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Once approved, serialized SSCC codes are generated automatically — typically within five to ten minutes — after which the labels become available for printing."
+            "text": "Implementation depends on the manufacturer’s existing process, product data, packaging structure, label requirements and operational workflow. A typical serialization workflow: Product setup → Batch management → Approval → Serialization → Label generation → Printing → Traceability A cloud-based platform such as APIQR can support these activities without requiring new on-premise servers or major packaging-line modifications."
           }
         },
         {
           "@type": "Question",
-          "name": "Can approved batches be edited later?",
+          "name": "How quickly can API serialization be implemented?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Once a batch is approved it is locked from further edits, which preserves data integrity and is a key requirement for regulatory audits. If something is wrong the batch is rejected or cancelled with a recorded reason instead."
+            "text": "Implementation time depends on the manufacturer’s existing process, product data, packaging requirements and operational workflow. With a ready-to-use cloud-based platform such as APIQR, implementation can typically be completed in less than a week after the required data is submitted, without the need for new servers or major packaging-line modifications."
           }
         },
         {
           "@type": "Question",
-          "name": "Does APIQR support GTIN and NDC standards?",
+          "name": "Can APIQR work with our existing operations?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The platform supports GS1-compliant GTIN generation as well as NDC fields for products sold into the United States, and manages SSCC ranges centrally so serials never collide."
+            "text": "Yes. APIQR is designed to support API serialization without requiring major changes to existing manufacturing and packaging operations. The cloud-based platform helps manage product and batch information, controlled approvals, serialization, QR-code labelling, printing, reprinting and traceability."
           }
         },
         {
           "@type": "Question",
-          "name": "Who can approve or print a batch?",
+          "name": "Can APIQR support customized labels?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Only authorised users. APIQR includes granular role-based user management with Administrator, Supervisor and Operator roles, and rights can be defined per user or cloned from an existing template. Reprints require the authorised user to log in again."
+            "text": "Yes. APIQR supports customized label templates for API and Bulk Drug serialization requirements. Labels can incorporate the required product, batch, packaging and serialization information, with controlled template management, preview and revision history."
           }
         }
       ]
@@ -125,152 +149,230 @@
   ]
 }
 ---
-<section class="page-head page-head-light">
+<section class="page-head page-head-light ph-split fq-head">
   <div class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb">
-      <ol>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><span aria-current="page">FAQ</span></li>
-      </ol>
-    </nav>
-    <p class="eyebrow" style="margin-top:22px">Frequently asked questions</p>
-    <h1>API serialization, answered plainly</h1>
-    <p class="lede">
-      The twelve questions we are asked most often by API manufacturers, quality heads and
-      regulatory affairs teams — answered without the sales language.
-    </p>
+    <div class="ph-grid">
+
+      <div class="ph-copy">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><span aria-current="page">FAQ</span></li>
+          </ol>
+        </nav>
+        <p class="eyebrow" style="margin-top:22px">Frequently asked questions — API serialization</p>
+        <h1>Questions about API serialization &amp; <span>G.S.R.&nbsp;20(E)</span>, answered clearly</h1>
+        <p class="lede">
+          Clear answers to common questions about API serialization, G.S.R. 20(E), QR-code
+          requirements, traceability and the APIQR platform. Questions commonly asked by API
+          manufacturers, quality and regulatory teams — answered simply.
+        </p>
+        <div class="head-actions">
+          <a class="btn btn-primary" href="gsr-20e-api-qr-code.html">
+            Read the regulation
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-secondary" href="api-serialization-software.html">
+            Explore APIQR platform
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="ph-art">
+        <ol class="fq-chain" aria-label="What API serialization connects">
+          <li><span class="fq-i" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V10l5 3V10l5 3V6l3-3h3v18z"/><path d="M3 21h18M7 17h2M12 17h2"/></svg></span><span class="fq-t">G.S.R. 20(E) <br>compliance</span></li>
+          <li><span class="fq-i" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8l8 4.4v9.6l-8 4.4-8-4.4V7.2z"/><path d="M4 7.2l8 4.4 8-4.4M12 11.6V21.2"/></svg></span><span class="fq-t">Unique pack <br>identification</span></li>
+          <li><span class="fq-i" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.8" width="14" height="18.4" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4.5"/></svg></span><span class="fq-t">Product &amp; batch <br>information</span></li>
+          <li><span class="fq-i" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5h11v9.5h-11z"/><path d="M13.5 10h4.2l3.3 3.3V16h-7.5"/><circle cx="6.5" cy="17.6" r="1.8"/><circle cx="17" cy="17.6" r="1.8"/></svg></span><span class="fq-t">Supply-chain <br>visibility</span></li>
+          <li><span class="fq-i" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="3.5" width="18.4" height="13" rx="1.6"/><path d="M9 20.5h6M12 16.5v4"/><circle cx="11.3" cy="9.6" r="2.7"/><path d="M13.3 11.6l2.2 2.2"/></svg></span><span class="fq-t">Traceability</span></li>
+        </ol>
+      </div>
+
+    </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
 
-    <h2 class="sec-title reveal" style="margin-bottom:8px">Common questions</h2>
-    <p class="sec-intro reveal" style="margin-bottom:34px">If yours is not covered here, <a href="contact.html">ask us directly</a> — a specialist replies within one working day.</p>
-
-    <div class="faq reveal" style="margin-top:0">
-
-      <details open>
-        <summary>What is an API?</summary>
-        <div class="faq-a">
-          <p>An <strong>Active Pharmaceutical Ingredient</strong> is the active component of a formulation product — a tablet, capsule, cream or injectable. In short, it is the raw material used to manufacture medicines.</p>
-          <p>In Indian industry usage it is also called a <strong>bulk drug</strong>. The two terms mean the same thing, and the QR code guideline applies to both names equally.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>What is API serialization?</summary>
-        <div class="faq-a">
-          <p>Start with serialization itself: it is the process of giving a product a unique identity through a standard set of details — GTIN, SSCC, SKU, product ingredients, batch number, manufacturing and expiry dates — which together make it uniquely identifiable and easily traceable through the supply chain.</p>
-          <p><strong>API serialization</strong> applies that to an API or bulk drug, so it can be tracked and traced through the chain: where it is now, and where it has been.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Is it compulsory to have a QR code on an API pack in India?</summary>
-        <div class="faq-a">
-          <p>Yes. The Government of India has made it compulsory for every API pack manufactured or imported in India to carry a QR code, as per the gazette published by the Ministry of Health and Family Welfare on <strong>18 January 2022</strong> under number <span class="mono">CG-DL-E-19012022-232768</span>. Guideline <strong>G.S.R. 20(E)</strong> came into force on 1 January 2023.</p>
-          <p>The full notification is available on the <a href="resources.html">resources page</a>, free and without a form.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>What information must the QR code contain?</summary>
-        <div class="faq-a">
-          <p>Eleven particulars: unique product identification code, name of the API, brand name if any, name and address of the manufacturer, batch number, batch size, date of manufacturing, date of expiry or retesting, serial shipping container code, manufacturing or import licence number, and any special storage conditions required.</p>
-          <p><a href="gsr-20e-api-qr-code.html#fields">See each field explained in practice →</a></p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Does the QR code go on every packaging level?</summary>
-        <div class="faq-a">
-          <p>Yes. The guideline requires a QR code on the label at <strong>each packaging level</strong> — primary, secondary and tertiary. Each is a distinct physical unit that can be separated from the others, so each needs its own identity.</p>
-          <p>Labelling only the outer shipper is one of the most common gaps we find when reviewing existing labels.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>How does this benefit API manufacturers, beyond avoiding penalties?</summary>
-        <div class="faq-a">
-          <p>At present the API industry has no standard set of rules for track and trace and remains largely unorganised, which means no supply chain visibility and a large information gap — precisely what invites counterfeiters into the market. Counterfeiting is a global problem that ends up affecting public health and reducing trust in the healthcare system.</p>
-          <p>Serialization guarantees API quality and safety, and gives you complete supply chain visibility, so the source of a problem can be identified quickly and contained. Downstream, it helps every member of the chain with inventory management, verification, recalls and reduced supply delays.</p>
-          <p><a href="why-api-serialization.html">Read the full case for traceability →</a></p>
-        </div>
-      </details>
-
-      <details>
-        <summary>How quickly can we be compliant?</summary>
-        <div class="faq-a">
-          <p>Typically <strong>four to five working days</strong> from kick-off to your first compliant printed label. APIQR is a cloud application, so there is nothing to procure and nothing to change on the packing line — the time goes on setting up your product masters and label templates, not on building software.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Is it cloud-based, or does it install on our servers?</summary>
-        <div class="faq-a">
-          <p>Fully cloud-based. Your team logs in through a standard web browser with a company code, username and password, and can work from the plant, the office or anywhere else with a connection. No on-premise servers, no heavy IT setup.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>What happens after a batch is approved?</summary>
-        <div class="faq-a">
-          <p>Serialized SSCC codes are generated automatically, typically within five to ten minutes of approval. Once they exist, the labels appear under Print Pending and become available for printing.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Can an approved batch be edited afterwards?</summary>
-        <div class="faq-a">
-          <p>No — and that is deliberate. Once a batch is approved it locks, which preserves data integrity and is a key requirement for regulatory audits. If something is wrong, the batch is rejected or cancelled with a recorded reason rather than quietly amended.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Does the software support GTIN and NDC standards?</summary>
-        <div class="faq-a">
-          <p>Yes. APIQR supports GS1-compliant GTIN generation as well as NDC (National Drug Code) fields for products sold into the United States market. SSCC number ranges are managed centrally through Core Config, so serials never collide across products or sites.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Who can approve or print a batch?</summary>
-        <div class="faq-a">
-          <p>Only the people you authorise. APIQR includes granular role-based user management with Administrator, Supervisor and Operator roles, and rights can be set per user or cloned from an existing template.</p>
-          <p>Reprints require the authorised user to log in again, which is what protects against unauthorised label duplication.</p>
-        </div>
-      </details>
-
+    <div class="fq-top reveal">
+      <div>
+        <h2 class="sec-title">Common questions</h2>
+        <p class="sec-intro">Have a question that isn’t covered here? <a href="contact.html">Ask us directly →</a> — we’ll reply within one working day.</p>
+      </div>
+      <div class="fq-search" role="search">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <label class="hp-field" for="fq-q">Search questions</label>
+        <input id="fq-q" type="search" placeholder="Search questions…" autocomplete="off">
+      </div>
     </div>
 
-    <h2 class="sec-title reveal" style="margin-top:64px">Keep reading</h2>
+    <div class="fq-list reveal">
+        <details class="q" id="what-is-an-api" open>
+          <summary><span class="q-n">01</span> What is an API (Active Pharmaceutical Ingredient)?</summary>
+          <div class="q-a">
+            <p>An <strong>Active Pharmaceutical Ingredient (API)</strong> is the active substance responsible for the intended effect of a pharmaceutical product. APIs are used to manufacture medicines such as tablets, capsules, creams, injectables and other pharmaceutical products.</p><p>API is also commonly referred to as a <strong>Bulk Drug</strong>.</p>
+          </div>
+        </details>
+        <details class="q" id="what-is-api-serialization">
+          <summary><span class="q-n">02</span> What is API serialization?</summary>
+          <div class="q-a">
+            <p><strong>API serialization</strong> is the process of assigning a unique identity to each API (Bulk Drug) pack and linking it with relevant product, batch and packaging information. This enables each pack to be identified, tracked and traced throughout the supply chain.</p>
+          </div>
+        </details>
+        <details class="q" id="why-it-matters">
+          <summary><span class="q-n">03</span> Why is API serialization important?</summary>
+          <div class="q-a">
+            <p>API serialization provides a more precise way to identify individual API (Bulk Drug) packs rather than relying only on product or batch information. It helps manufacturers and supply-chain stakeholders identify, track and trace packs throughout the supply chain, providing visibility into individual packs and their associated product and batch information. It also supports product traceability and helps meet applicable regulatory requirements, including G.S.R. 20(E).</p><p class="q-lead">It can support:</p><ul class="q-list"><li>Individual pack identification</li><li>Product and batch traceability</li><li>Faster access to associated information</li><li>Supply-chain visibility</li><li>More targeted investigation and response</li><li>Controlled serialization and labelling workflows</li></ul>
+          </div>
+        </details>
+        <details class="q" id="gsr-20e">
+          <summary><span class="q-n">04</span> What is G.S.R. 20(E) — Drugs (Amendment) Rules, 2022?</summary>
+          <div class="q-a">
+            <p><strong>G.S.R. 20(E)</strong> is a Government of India notification that introduced the <strong>Drugs (Amendment) Rules, 2022</strong>, further amending the <strong>Drugs Rules, 1945</strong>. It was issued by the Ministry of Health and Family Welfare on 18 January 2022. It requires <strong>APIs (Bulk Drugs)</strong> manufactured or imported in India to carry a <strong>Quick Response (QR) code on the label at each level of packaging</strong>. The QR code must contain specified information that can be read by a software application to facilitate tracking and tracing.</p><p><a class="q-cta" href="gsr-20e-api-qr-code.html">Know the guideline <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          </div>
+        </details>
+        <details class="q" id="imported-apis">
+          <summary><span class="q-n">05</span> Does the requirement apply to imported APIs?</summary>
+          <div class="q-a">
+            <p><strong>Yes.</strong> The QR-code requirement applies to applicable <strong>APIs and Bulk Drugs manufactured or imported in India</strong>.</p><p>Foreign API manufacturers supplying APIs or Bulk Drugs to the Indian market should therefore consider the applicable Indian QR-code labelling and information requirements under <strong>G.S.R. 20(E)</strong>.</p>
+          </div>
+        </details>
+        <details class="q" id="qr-mandatory">
+          <summary><span class="q-n">06</span> Is a QR code mandatory on API labels in India?</summary>
+          <div class="q-a">
+            <p><strong>Yes.</strong> Under <strong>G.S.R. 20(E) — The Drugs (Amendment) Rules, 2022</strong>, applicable Active Pharmaceutical Ingredients (APIs) or Bulk Drugs manufactured or imported in India must carry a <strong>QR code on the label at each packaging level</strong>.</p><p>The QR code is required to store the specified information in a form that can be read by a software application for tracking and tracing.</p><p><a class="q-cta" href="gsr-20e-api-qr-code.html#fields">Know all 11 particulars <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          </div>
+        </details>
+        <details class="q" id="packaging-levels" open>
+          <summary><span class="q-n">07</span> What does “each packaging level” mean?</summary>
+          <div class="q-a">
+            <p>The notification states that API and Bulk Drug labels must carry a QR code containing the specified information at “each level of packaging.”</p><p>“Each packaging level” refers to the different levels at which an API or Bulk Drug may be <strong>packaged, handled or transported</strong>. The requirement should therefore be considered across the complete packaging structure, <strong>not only on the outer shipping pack</strong>.</p><div class="pklv">
+              <div class="pk">
+                <img src="assets/img/faq-pack-primary.webp" width="160" height="160" loading="lazy" decoding="async" alt="A sealed foil pouch carrying a QR-code label.">
+                <div><span class="pk-n">01 — Primary pack</span>
+                <p>The individual packaging <strong>in direct contact with the API material</strong>.</p></div>
+              </div>
+              <div class="pk">
+                <img src="assets/img/faq-pack-secondary.webp" width="160" height="160" loading="lazy" decoding="async" alt="An open carton holding several sealed pouches.">
+                <div><span class="pk-n">02 — Secondary pack</span>
+                <p>A packaging level used to <strong>group or protect one or more primary packs</strong>.</p></div>
+              </div>
+              <div class="pk">
+                <img src="assets/img/faq-pack-tertiary.webp" width="160" height="160" loading="lazy" decoding="async" alt="A taped shipping carton on a wooden pallet.">
+                <div><span class="pk-n">03 — Tertiary / shipper pack</span>
+                <p>The outer packaging unit used for <strong>storage, handling or transportation</strong>.</p></div>
+              </div>
+            </div>
+          </div>
+        </details>
+        <details class="q" id="qr-contents">
+          <summary><span class="q-n">08</span> What information must the API QR code contain?</summary>
+          <div class="q-a">
+            <p>The QR code must contain the 11 mandated particulars specified under the requirement.</p><p>These include product identification code, API name, brand name, manufacturer details, batch information, manufacturing and expiry or retesting dates, Serial Shipping Container Code (SSCC), applicable licence information and special storage conditions where required.</p><p><a class="q-cta" href="gsr-20e-api-qr-code.html#fields">See all 11 particulars <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          </div>
+        </details>
+        <details class="q" id="sscc">
+          <summary><span class="q-n">09</span> What is an SSCC (Serial Shipping Container Code)?</summary>
+          <div class="q-a">
+            <p><strong>SSCC (Serial Shipping Container Code)</strong> is an <strong>18-digit unique number</strong> used to identify an individual logistics or shipping unit, such as an API container or shipment pack.</p><p>In API serialization, it helps uniquely identify an individual pack and link it with relevant product and traceability information.</p><p class="sscc-lbl">SSCC structure</p><p class="sscc"><span>Extension digit</span><i aria-hidden="true">+</i><span>GS1 company prefix</span><i aria-hidden="true">+</i><span>Serial reference</span><i aria-hidden="true">+</i><span>Check digit</span></p>
+          </div>
+        </details>
+        <details class="q" id="software-readable">
+          <summary><span class="q-n">10</span> What does “readable by a software application” mean?</summary>
+          <div class="q-a">
+            <p>The QR code is not intended simply to be a visual code printed on the label.</p><p>The information encoded in the QR code must be <strong>machine-readable by a software application</strong> so that the associated information can be accessed to facilitate tracking and tracing.</p><p>In a serialization workflow, the software application connects the encoded identity with the relevant product, batch, packaging and traceability records.</p><p><a class="q-cta" href="gsr-20e-api-qr-code.html#readable">Understand software readability <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          </div>
+        </details>
+        <details class="q" id="qr-scanned">
+          <summary><span class="q-n">11</span> What happens when an API QR code is scanned?</summary>
+          <div class="q-a">
+            <p>When the QR code is scanned using a compatible software application, the encoded information can be read and associated product and pack details can be accessed.</p><p class="q-lead">Depending on the information stored and the system used, this can support:</p><ul class="q-list"><li>Product identification</li><li>Batch identification</li><li>Pack or container identification</li><li>Manufacturing and expiry information</li><li>Traceability information</li><li>Verification and record access</li></ul>
+          </div>
+        </details>
+        <details class="q" id="implementation">
+          <summary><span class="q-n">12</span> How is API serialization implemented?</summary>
+          <div class="q-a">
+            <p>Implementation depends on the manufacturer’s existing process, product data, packaging structure, label requirements and operational workflow.</p><p class="sscc-lbl">A typical serialization workflow</p><p class="sscc q-flow"><span>Product setup</span><i aria-hidden="true">→</i><span>Batch management</span><i aria-hidden="true">→</i><span>Approval</span><i aria-hidden="true">→</i><span>Serialization</span><i aria-hidden="true">→</i><span>Label generation</span><i aria-hidden="true">→</i><span>Printing</span><i aria-hidden="true">→</i><span>Traceability</span></p><p>A cloud-based platform such as APIQR can support these activities without requiring new on-premise servers or major packaging-line modifications.</p><p><a class="q-cta" href="api-serialization-software.html">Explore the APIQR platform <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+          </div>
+        </details>
+        <details class="q" id="implementation-time">
+          <summary><span class="q-n">13</span> How quickly can API serialization be implemented?</summary>
+          <div class="q-a">
+            <p>Implementation time depends on the manufacturer’s existing process, product data, packaging requirements and operational workflow. With a ready-to-use cloud-based platform such as APIQR, implementation can typically be completed in <strong>less than a week</strong> after the required data is submitted, without the need for new servers or major packaging-line modifications.</p>
+          </div>
+        </details>
+        <details class="q" id="existing-operations">
+          <summary><span class="q-n">14</span> Can APIQR work with our existing operations?</summary>
+          <div class="q-a">
+            <p><strong>Yes.</strong> APIQR is designed to support API serialization without requiring major changes to existing manufacturing and packaging operations. The cloud-based platform helps manage product and batch information, controlled approvals, serialization, QR-code labelling, printing, reprinting and traceability.</p>
+          </div>
+        </details>
+        <details class="q" id="custom-labels">
+          <summary><span class="q-n">15</span> Can APIQR support customized labels?</summary>
+          <div class="q-a">
+            <p><strong>Yes.</strong> APIQR supports customized label templates for API and Bulk Drug serialization requirements.</p><p>Labels can incorporate the required product, batch, packaging and serialization information, with controlled template management, preview and revision history.</p>
+          </div>
+        </details>
+      <p class="fq-none" hidden>No question matches that search. <a href="contact.html">Ask us directly</a> and we’ll reply within one working day.</p>
+    </div>
 
-    <div class="related">
-      <a class="rel" href="gsr-20e-api-qr-code.html">
-        <span class="k">Reference</span>
-        <h3>The regulation in full</h3>
-        <p>All eleven mandatory fields, packaging levels, and an eight-point compliance self-check.</p>
-        <span class="go">Read the regulation
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </span>
+    <div class="fq-ask reveal">
+      <span class="fq-ask-i" aria-hidden="true">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12.2a8.3 8.3 0 01-12.2 7.3L3.5 20.6l1.2-4.4A8.3 8.3 0 1120.5 12.2z"/><path d="M8.6 12.2h.01M12.2 12.2h.01M15.8 12.2h.01" stroke-width="2.6"/></svg>
+      </span>
+      <div class="fq-ask-c">
+        <p class="eyebrow">Still have a question?</p>
+        <h2>Talk to our API serialization team</h2>
+        <p>Have a question about API serialization, G.S.R. 20(E) or QR-code labelling? Contact us.</p>
+      </div>
+      <div class="fq-ask-a">
+        <a class="btn btn-primary" href="contact.html">
+          Talk to our team
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-secondary" href="contact.html">
+          Book a free 30-minute demo
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <span class="fq-ask-q" aria-hidden="true">?</span>
+    </div>
+
+    <div class="fq-more-h reveal">
+      <div>
+        <p class="eyebrow">Keep exploring</p>
+        <h2 class="sec-title">Go further with APIQR</h2>
+      </div>
+      <p>More resources to support your API serialization journey</p>
+    </div>
+
+    <div class="xcards reveal">
+      <a class="xc xc-reg" href="gsr-20e-api-qr-code.html">
+        <div class="xc-c">
+          <div class="xc-h"><span class="xc-i" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.8H6.5a2 2 0 00-2 2v14.4a2 2 0 002 2h11a2 2 0 002-2V8.3z"/><path d="M14 2.8v5.5h5.5M8.5 13h7M8.5 17h7"/></svg></span><h3>The regulation</h3></div>
+          <p>G.S.R. 20(E), the 11 mandatory particulars, packaging levels and the compliance self-check.</p>
+          <span class="xc-go">Read the regulation <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="xc-art" aria-hidden="true"><img src="assets/img/res-gazette.webp" width="426" height="420" loading="lazy" decoding="async" alt=""></div>
       </a>
-      <a class="rel" href="api-serialization-software.html">
-        <span class="k">The platform</span>
-        <h3>How APIQR works</h3>
-        <p>Nine modules, six steps, and real screens from the running application.</p>
-        <span class="go">See the platform
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </span>
+      <a class="xc xc-pf" href="api-serialization-software.html">
+        <div class="xc-c">
+          <div class="xc-h"><span class="xc-i" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.6 1.6 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.6 1.6 0 00-1.8-.3 1.6 1.6 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.6 1.6 0 00-1-1.5 1.6 1.6 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.6 1.6 0 00.3-1.8 1.6 1.6 0 00-1.5-1H3a2 2 0 010-4h.1a1.6 1.6 0 001.5-1 1.6 1.6 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.6 1.6 0 001.8.3H9a1.6 1.6 0 001-1.5V3a2 2 0 014 0v.1a1.6 1.6 0 001 1.5 1.6 1.6 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.6 1.6 0 00-.3 1.8V9a1.6 1.6 0 001.5 1H21a2 2 0 010 4h-.1a1.6 1.6 0 00-1.5 1z"/></svg></span><h3>How the APIQR platform works</h3></div>
+          <p>Explore APIQR features for product and batch management, serialization, QR-code labelling, printing and traceability.</p>
+          <span class="xc-go">See the platform <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="xc-art" aria-hidden="true"><span class="xc-laptop"><img src="assets/img/apiqr-dashboard-screen.png" width="1905" height="945" loading="lazy" decoding="async" alt=""></span></div>
       </a>
-      <a class="rel" href="contact.html">
-        <span class="k">Talk to us</span>
-        <h3>Ask us directly</h3>
-        <p>If your question is not here, a specialist will answer it within one working day.</p>
-        <span class="go">Get in touch
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </span>
+      <a class="xc xc-res" href="resources.html">
+        <div class="xc-c">
+          <div class="xc-h"><span class="xc-i" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 5.5c2.8-1.3 6-1.3 9.5.8v14c-3.5-2.1-6.7-2.1-9.5-.8zM21.5 5.5c-2.8-1.3-6-1.3-9.5.8v14c3.5-2.1 6.7-2.1 9.5-.8z"/></svg></span><h3>Resources</h3></div>
+          <p>Find the official Gazette, API serialization resources and compliance checklist.</p>
+          <span class="xc-go">Explore resources <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+        <div class="xc-art" aria-hidden="true"><img src="assets/img/faq-explore-resources.webp" width="480" height="300" loading="lazy" decoding="async" alt=""></div>
       </a>
     </div>
 

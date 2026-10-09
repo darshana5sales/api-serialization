@@ -76,6 +76,43 @@
     });
   }
 
+  /* ---------- FAQ deep links ----------
+     Other pages link straight to one answer (faq.html#packaging-levels). A
+     closed <details> stays shut when it is the target, so open it here. */
+  var openTarget = function () {
+    var id = decodeURIComponent(location.hash.slice(1));
+    var el = id && document.getElementById(id);
+    if (el && el.tagName === "DETAILS") {
+      el.open = true;
+      // instant: the page's smooth scrolling would otherwise still be moving
+      // when later layout shifts land
+      el.scrollIntoView({ behavior: "instant", block: "start" });
+    }
+  };
+  openTarget();
+  // again once images and fonts are in, in case they moved the answer
+  window.addEventListener("load", openTarget);
+  window.addEventListener("hashchange", openTarget);
+
+  /* ---------- FAQ search ----------
+     Filters the questions as you type, matching the question and its answer. */
+  var fqInput = document.getElementById("fq-q");
+  if (fqInput) {
+    var fqItems = Array.prototype.slice.call(document.querySelectorAll(".fq-list .q"));
+    var fqNone = document.querySelector(".fq-none");
+    var fqText = fqItems.map(function (q) { return q.textContent.toLowerCase().replace(/\s+/g, " "); });
+    fqInput.addEventListener("input", function () {
+      var words = fqInput.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      var shown = 0;
+      fqItems.forEach(function (q, i) {
+        var hit = words.every(function (w) { return fqText[i].indexOf(w) !== -1; });
+        q.hidden = !hit;
+        if (hit) shown++;
+      });
+      if (fqNone) fqNone.hidden = shown > 0;
+    });
+  }
+
   /* ---------- compliance self-check ---------- */
   var checklist = document.querySelector(".checklist");
   if (checklist) {

@@ -1446,7 +1446,7 @@ table.ref-icon td:last-child{color:var(--cyan-ink)}
 .ab-head h1 span{color:var(--cyan)}
 .ab-head .lede + .lede{margin-top:14px}
 .ab-head .head-assure{gap:10px clamp(16px,2vw,28px)}
-.ab-photo img{aspect-ratio:1112/640;object-fit:cover}
+.ab-photo img{aspect-ratio:3/2;object-fit:cover}
 
 /* copy beside a photo */
 .ab-split{display:grid;grid-template-columns:1fr;gap:clamp(30px,4vw,60px);align-items:center}
@@ -1562,7 +1562,8 @@ table.ref-icon td:last-child{color:var(--cyan-ink)}
 }
 @media(min-width:560px){.ab-logos{--n:3}}
 @media(min-width:860px){.ab-logos{--n:5}}
-@media(min-width:1280px){.ab-logos{--n:8}}
+/* 9 a row: the 17 logos fall 9 + 8 rather than leaving one alone on a third row */
+@media(min-width:1280px){.ab-logos{--n:9}}
 .ab-logos li{
   flex:0 0 calc((100% - (var(--n) - 1) * 12px) / var(--n));
   height:96px;display:grid;place-items:center;padding:14px 16px;
@@ -1639,7 +1640,10 @@ table.ref-icon td:last-child{color:var(--cyan-ink)}
 @media(min-width:620px){.rs-doc{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
 .rs-doc-img{margin:0;border-radius:8px;overflow:hidden;background:var(--ground-alt)}
 .rs-doc-img img{display:block;width:100%;height:100%;object-fit:cover;min-height:220px}
-.rs-doc-img-l img{object-position:left center}
+/* the laptop screen is the point of this one, so it is shown whole at its own
+   shape rather than cropped to the card's height */
+.rs-doc-img-l{align-self:center}
+.rs-doc-img-l img{height:auto;min-height:0;object-fit:contain}
 .rs-doc-b{display:flex;flex-direction:column;align-items:flex-start;padding:6px 6px 6px 0}
 .rs-doc h3{font-size:clamp(20px,2vw,24px);margin-top:10px}
 .rs-doc-b > p:not(.rs-k):not(.rs-meta){font-size:15.5px;line-height:1.6;margin-top:12px}
@@ -1748,3 +1752,141 @@ table.ref-icon td:last-child{color:var(--cyan-ink)}
    "on its way" rather than as a broken card */
 .bl-soon{background:var(--ground-alt);border-style:dashed;box-shadow:none}
 .bl-soon .rs-post-b{justify-content:center;padding:28px 26px}
+
+/* ==========================================================================
+   FAQ page
+   ========================================================================== */
+.fq-head h1 span{color:var(--cyan-ink)}
+.fq-head .ph-art{justify-content:center}
+
+/* what serialization connects: five steps joined by a dotted line */
+.fq-chain{
+  list-style:none;margin:0;padding:clamp(22px,2.4vw,32px) clamp(14px,1.6vw,22px);
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;
+  background:var(--surface);border:1px solid var(--cyan-line);border-radius:14px;
+  box-shadow:var(--shadow);
+}
+.fq-chain li{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.fq-chain li:not(:last-child)::after{
+  content:"";position:absolute;top:31px;left:calc(50% + 36px);right:calc(-50% + 36px);
+  border-top:2px dotted var(--cyan);
+}
+.fq-i{
+  width:64px;height:64px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:var(--cyan-soft);border:1px solid var(--cyan-line);color:var(--blue);
+}
+.fq-t{font-family:var(--f-display);font-weight:600;font-size:13.5px;line-height:1.3;color:var(--ink)}
+@media(max-width:560px){
+  .fq-chain{grid-template-columns:1fr;gap:12px}
+  .fq-chain li{flex-direction:row;text-align:left}
+  .fq-chain li:not(:last-child)::after{display:none}
+  .fq-i{width:52px;height:52px}
+  .fq-t br{display:none}
+}
+
+/* heading on the left, search on the right */
+.fq-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px 30px}
+.fq-top .sec-intro{margin-top:8px}
+.fq-search{
+  position:relative;flex:1 1 300px;max-width:380px;display:flex;align-items:center;
+}
+.fq-search svg{position:absolute;left:14px;color:var(--muted);pointer-events:none}
+.fq-search input{
+  width:100%;font:inherit;font-size:15px;color:var(--ink);
+  padding:12px 14px 12px 42px;border:1px solid var(--line);border-radius:999px;background:var(--surface);
+}
+.fq-search input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-soft)}
+
+/* one column of the numbered cards the home page uses */
+.fq-list{margin-top:clamp(26px,3vw,38px);display:flex;flex-direction:column;gap:12px}
+.fq-list .q{scroll-margin-top:100px}
+.fq-list .q-a{max-width:none}
+.fq-list .q-a > p{max-width:88ch}
+.fq-list .q-list{max-width:760px}
+@media(min-width:900px){.fq-list .pklv{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.fq-none{padding:22px;border:1px dashed var(--line);border-radius:10px;text-align:center}
+
+/* still have a question */
+.fq-ask{
+  position:relative;overflow:hidden;
+  margin-top:clamp(48px,5vw,72px);display:grid;grid-template-columns:1fr;gap:20px;align-items:center;
+  padding:clamp(24px,3vw,40px);border-radius:16px;
+  background:linear-gradient(110deg,var(--cyan-soft) 0%,#F4FBFE 55%,var(--surface) 100%);
+  border:1px solid var(--cyan-line);box-shadow:var(--shadow);
+}
+@media(min-width:960px){.fq-ask{grid-template-columns:auto minmax(0,1fr) auto;gap:28px;padding-right:clamp(70px,7vw,110px)}}
+.fq-ask > *{position:relative;z-index:1}
+.fq-ask-i{width:68px;height:68px;border-radius:20px;display:grid;place-items:center;background:var(--blue);color:#fff;box-shadow:0 14px 28px -14px rgba(28,59,125,.7)}
+.fq-ask h2{font-size:clamp(22px,2.3vw,30px);margin-top:8px}
+.fq-ask-c > p:not(.eyebrow){margin-top:8px}
+.fq-ask-a{display:flex;flex-wrap:wrap;gap:12px}
+/* the question-mark bubble and its dashed orbit, decoration only */
+.fq-ask-q{
+  position:absolute !important;z-index:0 !important;top:16px;right:22px;
+  width:50px;height:50px;border-radius:50%;display:grid;place-items:center;
+  background:var(--surface);border:1px solid var(--cyan-line);color:var(--cyan-ink);
+  font-family:var(--f-display);font-weight:700;font-size:24px;box-shadow:var(--shadow);
+}
+.fq-ask::before{
+  content:"";position:absolute;top:-52px;right:-52px;width:126px;height:126px;border-radius:50%;
+  border:2px dashed var(--cyan-line);pointer-events:none;
+}
+@media(max-width:959px){.fq-ask-q{top:14px;right:14px;width:40px;height:40px;font-size:19px}}
+
+/* keep exploring */
+.fq-more-h{margin-top:clamp(52px,5.4vw,80px);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 24px}
+.fq-more-h .sec-title{margin-top:10px}
+.fq-more-h > p{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* three tinted cards, each with a picture fading in from the right */
+.xcards{margin-top:26px;display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:1100px){.xcards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.xc{
+  --tint:var(--cyan-soft);--tone:var(--cyan-line);
+  position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) 40%;
+  min-height:228px;border-radius:14px;text-decoration:none;color:var(--body);
+  background:linear-gradient(135deg,var(--tint),var(--surface) 78%);
+  border:1px solid var(--tone);box-shadow:var(--shadow-sm);
+  transition:box-shadow .18s ease,transform .18s ease,border-color .18s ease;
+}
+.xc:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+/* yellow is the compliance colour, so it marks the regulation card */
+.xc-reg{--tint:var(--yellow-soft);--tone:#F3E3A6}
+.xc-pf{--tint:var(--cyan-soft);--tone:var(--cyan-line)}
+.xc-res{--tint:var(--blue-soft);--tone:var(--line)}
+.xc-c{position:relative;z-index:1;display:flex;flex-direction:column;gap:12px;padding:24px 8px 24px 24px}
+.xc-h{display:flex;align-items:center;gap:12px}
+.xc-h h3{font-size:18px;line-height:1.25;color:var(--blue)}
+.xc-i{
+  flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  background:var(--surface);border:1px solid var(--tone);color:var(--blue);
+}
+.xc-reg .xc-i{background:var(--yellow);border-color:var(--yellow)}
+.xc-pf .xc-i{color:var(--cyan-ink)}
+.xc-c p{font-size:14.5px;line-height:1.55}
+.xc-go{
+  margin-top:auto;display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--f-display);font-weight:600;font-size:15px;color:var(--blue);
+}
+.xc:hover .xc-go{color:var(--cyan-ink)}
+.xc-art{position:relative}
+.xc-art > img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 38%);mask-image:linear-gradient(90deg,transparent,#000 38%);
+}
+.xc-reg .xc-art > img{object-position:30% center}
+.xc-res .xc-art > img{object-position:18% center;-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%);mask-image:linear-gradient(90deg,transparent,#000 22%)}
+/* a laptop lid holding the real dashboard screen, run off the card's edge */
+.xc-laptop{
+  position:absolute;left:4%;right:-58%;bottom:30px;
+  border:7px solid #16233D;border-bottom-width:12px;border-radius:10px 10px 4px 4px;
+  background:#16233D;box-shadow:0 18px 36px -18px rgba(15,27,51,.6);
+}
+.xc-laptop img{display:block;width:100%;height:auto;border-radius:3px}
+.xc-laptop::after{
+  content:"";position:absolute;left:-14%;right:-14%;bottom:-20px;height:9px;
+  background:linear-gradient(#C9D2E0,#9AA7BC);border-radius:0 0 10px 10px;
+}
+/* stacked cards are wider, so the laptop would outgrow the card's height */
+@media(max-width:1099px){.xc-laptop{right:-15%}}
+@media(max-width:480px){.xc{grid-template-columns:minmax(0,1fr) 32%}}

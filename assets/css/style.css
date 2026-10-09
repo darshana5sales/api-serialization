@@ -711,7 +711,7 @@ body.lb-open{overflow:hidden}
    FAQ
    ========================================================================== */
 .faq{max-width:860px;margin:40px auto 0;border-top:1px solid var(--line)}
-.faq details{border-bottom:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);scroll-margin-top:100px}
 .faq summary{
   list-style:none;cursor:pointer;padding:22px 44px 22px 0;position:relative;
   font-family:var(--f-display);font-weight:600;font-size:17.5px;color:var(--ink);
@@ -1183,19 +1183,32 @@ ol.flow{list-style:none;padding:0;margin:0}
 }
 .q-cta:hover{border-bottom-color:var(--cyan)}
 
+/* bullet lists and their lead-in line, inside answers */
+.q-a p.q-lead{margin-top:14px;font-weight:600;color:var(--ink)}
+.q-list{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
+@media(min-width:620px){.q-list{grid-template-columns:1fr 1fr;column-gap:24px}}
+.q-list li{position:relative;padding-left:20px;font-size:15px;line-height:1.5}
+.q-list li::before{
+  content:"";position:absolute;left:2px;top:6px;width:9px;height:5px;
+  border-left:2px solid var(--cyan);border-bottom:2px solid var(--cyan);transform:rotate(-45deg);
+}
+.qa-all{margin-top:26px;text-align:center}
+
 /* the three packaging levels, inside answer 07 */
 .pklv{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
 .pk{
   border:1px solid var(--line);border-left:3px solid var(--cyan);
   border-radius:var(--r);background:var(--ground-alt);padding:14px 16px;
+  display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px;align-items:center;
 }
+.pk img{display:block;width:64px;height:64px;border-radius:6px;background:#fff}
 .pk-n{
   display:block;margin-bottom:5px;font-family:var(--f-mono);font-size:10.5px;
   font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--blue);
 }
 .pk p{font-size:14.5px;line-height:1.5}
 
-/* the SSCC structure, inside answer 09 */
+/* the SSCC structure (answer 09) and the workflow (answer 12) */
 .q-a p.sscc-lbl{
   margin-top:18px;font-family:var(--f-mono);font-size:10.5px;font-weight:600;
   letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
@@ -1207,6 +1220,7 @@ ol.flow{list-style:none;padding:0;margin:0}
   padding:6px 10px;border-radius:var(--r);
 }
 .sscc i{font-style:normal;font-weight:600;color:var(--muted)}
+.q-flow span{background:var(--blue-soft);border-color:var(--line);color:var(--blue)}
 
 /* ==========================================================================
    CLOSING CTA — additions for the home page variant
