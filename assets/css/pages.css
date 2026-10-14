@@ -1890,3 +1890,101 @@ table.ref-icon td:last-child{color:var(--cyan-ink)}
 /* stacked cards are wider, so the laptop would outgrow the card's height */
 @media(max-width:1099px){.xc-laptop{right:-15%}}
 @media(max-width:480px){.xc{grid-template-columns:minmax(0,1fr) 32%}}
+
+/* ==========================================================================
+   Contact / book a demo
+   ========================================================================== */
+.ct-head h1{max-width:20ch}
+.ct-head h1 span{color:var(--cyan-ink)}
+.ct-head .lede + .lede{margin-top:14px}
+.ct-head .ph-art{justify-content:center}
+.ct-hero-img{margin:0;border-radius:14px;overflow:hidden;box-shadow:var(--shadow-lg);background:#fff}
+.ct-hero-img img{display:block;width:100%;height:auto}
+
+/* 30 minutes · online demonstration · no obligation */
+.ct-facts{
+  list-style:none;margin:30px 0 0;padding:14px 18px;display:flex;flex-wrap:wrap;gap:12px 0;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-sm);
+  width:fit-content;max-width:100%;
+}
+.ct-facts li{
+  display:flex;align-items:center;gap:10px;padding:0 18px;
+  font-family:var(--f-display);font-weight:600;font-size:15px;color:var(--blue);
+}
+.ct-facts li:first-child{padding-left:0}
+.ct-facts li + li{border-left:1px solid var(--line)}
+.ct-facts-i{width:40px;height:40px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--cyan-soft);color:var(--blue)}
+@media(max-width:560px){
+  .ct-facts{flex-direction:column;width:100%}
+  .ct-facts li{padding:0}
+  .ct-facts li + li{border-left:0}
+}
+
+/* the form */
+.ct-form{border-radius:14px}
+.ct-form-h{padding:clamp(22px,2.6vw,30px) clamp(22px,2.6vw,30px) 0}
+.ct-form-h::before{content:"";display:block;width:44px;height:4px;border-radius:2px;background:var(--yellow);margin-bottom:16px}
+.ct-form-h h2{font-size:clamp(22px,2.2vw,28px)}
+.ct-form-h p{margin-top:8px;font-size:16px}
+.ct-form form.enquiry{padding:clamp(22px,2.6vw,30px)}
+.ct-form-sub{grid-column:1/-1;font-size:18px;color:var(--blue)}
+/* an icon sat inside each control */
+.ctl{position:relative}
+.ctl > svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.ctl-area > svg{top:15px;transform:none}
+.ctl input,.ctl select,.ctl textarea{padding-left:44px}
+.ctl select{
+  appearance:none;-webkit-appearance:none;padding-right:42px;cursor:pointer;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231C3B7D' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center;
+}
+.ctl select:invalid{color:var(--muted)}
+.ctl select option{color:var(--ink)}
+.ctl input::placeholder,.ctl textarea::placeholder{color:#8C98B0}
+
+/* contact cards: round icon beside the details */
+.ct-aside .ci{display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;align-items:start;border-radius:14px;padding:22px}
+.ci-i{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--cyan-soft);color:var(--blue)}
+.ci-i-y{background:var(--yellow-soft);color:var(--blue)}
+.ci-b{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ct-aside .ci h3{font-size:17px;color:var(--blue)}
+.ct-aside .ci-note{font-family:var(--f-body);font-size:14px;letter-spacing:0;text-transform:none}
+.ct-aside .ci p strong{color:var(--ink)}
+.ci-link{display:inline-flex;align-items:center;gap:7px;font-family:var(--f-display);font-weight:600;font-size:14.5px;color:var(--blue);text-decoration:none}
+.ci-link:hover{color:var(--cyan-ink)}
+.ci-map{grid-column:1/-1;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--ground-alt);aspect-ratio:16/9}
+.ci-map iframe{display:block;width:100%;height:100%;border:0}
+.ci-btn{align-self:flex-start;margin-top:6px}
+
+/* what you will see in the demo */
+.ct-see{display:grid;grid-template-columns:1fr;gap:clamp(32px,4vw,56px);align-items:center}
+@media(min-width:1100px){.ct-see{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}}
+.ct-see .sec-title span{color:var(--cyan-ink)}
+.ct-see-list{list-style:none;margin:26px 0 30px;padding:0;display:grid;grid-template-columns:1fr;gap:16px 26px}
+@media(min-width:620px){.ct-see-list{grid-template-columns:1fr 1fr}}
+.ct-see-list li{display:flex;align-items:center;gap:14px;font-family:var(--f-display);font-weight:600;font-size:16px;line-height:1.35;color:var(--ink)}
+.ct-see-i{width:52px;height:52px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--cyan-soft);color:var(--blue)}
+.ct-see-i-y{background:var(--yellow-soft)}
+.ct-see-img{margin:0}
+.ct-see-img img{display:block;width:100%;height:auto;border-radius:14px;box-shadow:var(--shadow)}
+
+/* what happens next: three steps joined by arrows */
+.ct-steps{list-style:none;margin:clamp(30px,3.4vw,46px) 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:22px}
+@media(min-width:900px){.ct-steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:44px}}
+.ct-step{
+  position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:26px;box-shadow:var(--shadow);
+}
+.ct-step-i{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:var(--cyan-soft);color:var(--blue)}
+.ct-step-y .ct-step-i{background:var(--yellow-soft)}
+.ct-step h3{font-size:19px;margin-top:18px;color:var(--blue)}
+.ct-step h3::after{content:"";display:block;width:46px;height:3px;border-radius:2px;background:var(--cyan-line);margin-top:12px}
+.ct-step-y h3::after{background:var(--yellow)}
+.ct-step p{margin-top:12px;font-size:15.5px;line-height:1.6}
+@media(min-width:900px){
+  .ct-step:not(:last-child)::after{
+    content:"";position:absolute;top:50%;right:-36px;width:28px;height:28px;margin-top:-14px;border-radius:50%;
+    background:var(--cyan-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231C3B7D' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l6 6-6 6'/%3E%3C/svg%3E") no-repeat center;
+    border:1px solid var(--cyan-line);
+  }
+}
+.ct-next-h span{color:var(--cyan-ink)}

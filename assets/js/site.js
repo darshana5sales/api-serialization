@@ -168,6 +168,11 @@
      POST when the endpoint exists.                                        */
   var form = document.querySelector("form.enquiry");
   if (form) {
+    // links elsewhere pre-select the enquiry type: contact.html?doc=brochure
+    var pick = /[?&](?:doc|type)=([\w-]+)/.exec(location.search);
+    var subj = form.querySelector("#subject");
+    if (pick && subj && subj.querySelector('option[value="' + pick[1] + '"]')) subj.value = pick[1];
+
     form.addEventListener("submit", function (e) {
       var trap = form.querySelector('input[name="website"]');
       if (trap && trap.value) { e.preventDefault(); return; }
