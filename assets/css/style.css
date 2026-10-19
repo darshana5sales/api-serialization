@@ -750,36 +750,131 @@ body.lb-open{overflow:hidden}
 /* ==========================================================================
    FOOTER
    ========================================================================== */
-.site-footer{background:#13233F;color:#A9BAD6;padding:clamp(48px,6vw,72px) 0 0;font-size:15px}
-.foot-grid{display:grid;grid-template-columns:1fr;gap:36px}
-@media(min-width:700px){.foot-grid{grid-template-columns:1.5fr 1fr 1fr}}
-@media(min-width:1000px){.foot-grid{grid-template-columns:1.7fr 1fr 1fr 1.2fr}}
-.site-footer .foot-h{
-  color:#fff;font-size:12px;font-family:var(--f-mono);letter-spacing:.14em;
-  text-transform:uppercase;margin-bottom:16px;font-weight:600;
+/* Light five-column footer over a dark-blue legal bar (client mockup
+   "10.APIQR - Footer"). Columns: 1 → 2 (brand spans) → 4 (brand becomes a
+   horizontal row above, dividers) → 5 at 1536px, the first width where
+   every heading and link label holds one line. */
+.site-footer{--foot-tint:#DCEEFC;font-size:16px;color:var(--ink)}
+.site-footer ul{list-style:none;margin:0;padding:0}
+.site-footer a{text-decoration:none}
+
+.foot-main{
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#FFFFFF 0%,#F2F8FD 100%);
+  border-top:1px solid var(--line);
+  padding:clamp(48px,5vw,76px) 0 clamp(90px,8.5vw,130px);
 }
-.site-footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-.site-footer a{color:#A9BAD6;text-decoration:none}
-.site-footer a:hover{color:var(--cyan);text-decoration:underline}
-.foot-brand .brand-mark{width:44px;height:44px}
-.foot-brand .brand:hover{text-decoration:none}
-.foot-brand .brand-name{color:#fff}
-.foot-brand .brand-sub{color:#7E93B6}
-.foot-brand p{margin-top:16px;font-size:14.5px;max-width:38ch;line-height:1.6}
-.foot-contact li{display:flex;gap:10px;align-items:flex-start}
-.foot-contact svg{color:var(--cyan);flex:none;margin-top:4px}
-.socials{display:flex;gap:10px;margin-top:18px}
+.foot-main .wrap{position:relative;z-index:1}
+.foot-waves{
+  position:absolute;left:0;bottom:0;z-index:0;pointer-events:none;
+  width:min(58%,1000px);height:clamp(150px,17vw,290px);
+}
+@media(max-width:639px){.foot-waves{width:100%;height:110px;opacity:.8}}
+
+.foot-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:40px}
+@media(min-width:640px){
+  .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 40px}
+  .foot-brand{grid-column:1/-1}
+}
+@media(min-width:1024px){
+  .foot-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,.85fr) minmax(0,1.25fr);gap:48px 0}
+  .foot-col{padding:0 clamp(16px,1.7vw,30px);border-left:1px solid var(--line)}
+  .foot-brand + .foot-col{border-left:0;padding-left:0}
+  .foot-col:last-child{padding-right:0}
+}
+@media(min-width:1024px) and (max-width:1535px){
+  .foot-brand{
+    display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(32px,4vw,64px);
+    padding-bottom:40px;border-bottom:1px solid var(--line);
+  }
+  .foot-about{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .foot-brand .foot-about p{margin:0;max-width:none}
+  .foot-brand .socials{margin:0}
+}
+@media(min-width:1536px){
+  .foot-grid{grid-template-columns:minmax(300px,1.05fr) minmax(0,1.05fr) minmax(0,1.05fr) minmax(0,.75fr) minmax(0,1.3fr)}
+  .foot-brand{grid-column:auto;padding-right:clamp(24px,2vw,40px)}
+  .foot-brand + .foot-col{border-left:1px solid var(--line);padding-left:clamp(16px,1.7vw,30px)}
+}
+
+/* brand column */
+.foot-logo{display:inline-flex;align-items:center;gap:14px}
+.foot-logo img{width:68px;height:68px;flex:none;display:block}
+.foot-logo > span{display:flex;flex-direction:column;gap:6px}
+.foot-logo-name{font-family:var(--f-display);font-weight:700;font-size:32px;line-height:1;color:var(--blue);letter-spacing:-.02em}
+.foot-logo-sub{font-family:var(--f-display);font-weight:600;font-size:14.5px;line-height:1.2;color:var(--blue);white-space:nowrap}
+.foot-brand p{margin-top:18px;font-size:16.5px;line-height:1.55;max-width:34ch}
+.foot-brand p + p{margin-top:14px}
+@media(min-width:640px) and (max-width:1023px){.foot-brand p{max-width:60ch}}
+.socials{display:flex;gap:14px;margin-top:24px}
 .socials a{
-  width:38px;height:38px;border:1px solid rgba(255,255,255,.2);border-radius:var(--r);
-  display:grid;place-items:center;color:#A9BAD6;
+  width:50px;height:50px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--foot-tint);color:var(--blue);
+  transition:background-color .15s,color .15s;
 }
-.socials a:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,175,239,.1)}
+.socials a:hover{background:var(--blue);color:#fff}
+
+/* column heading with the short yellow rule */
+.site-footer .foot-h{font-size:20px;color:var(--blue);letter-spacing:-.01em;margin-bottom:26px}
+.site-footer .foot-h::after{content:"";display:block;width:40px;height:4px;border-radius:2px;background:var(--yellow);margin-top:14px}
+
+/* link lists — text left, chevron right */
+.foot-links{display:flex;flex-direction:column;gap:6px}
+.foot-links a{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:6px 0;color:var(--ink);line-height:1.35;
+}
+.foot-links a::after{
+  content:"";flex:none;width:7px;height:7px;margin-right:3px;
+  border-top:1.8px solid currentColor;border-right:1.8px solid currentColor;
+  transform:rotate(45deg);transition:transform .15s;
+}
+.foot-links a:hover{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.foot-links a:hover::after{transform:translateX(3px) rotate(45deg)}
+
+/* contact list — round icon chips */
+.foot-contact{display:flex;flex-direction:column;gap:22px}
+.foot-contact li{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;align-items:center}
+.foot-contact li:first-child{align-items:start}
+.fc-i{width:46px;height:46px;border-radius:50%;background:var(--foot-tint);color:var(--blue);display:grid;place-items:center}
+.foot-contact strong{display:block;color:var(--blue);font-weight:600;margin-bottom:2px}
+.fc-addr{display:block;line-height:1.5;font-size:15.5px}
+.fc-addr span{display:inline-block}
+.foot-contact a{color:var(--ink);overflow-wrap:anywhere}
+.foot-contact a:hover{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.foot-contact .fc-strong{color:var(--blue);font-weight:600}
+.foot-contact .fc-u{text-decoration:underline;text-underline-offset:3px}
+.foot-contact .fc-map{display:inline-flex;gap:8px;margin-top:6px;color:var(--blue);font-weight:600;font-size:15px}
+.fc-map span{transition:transform .15s}
+.fc-map:hover span{transform:translateX(3px)}
+
+/* legal bar */
 .foot-bottom{
-  margin-top:44px;border-top:1px solid rgba(255,255,255,.12);padding:22px 0 30px;
-  display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
-  font-size:13.5px;color:#7E93B6;
+  position:relative;overflow:hidden;
+  background:linear-gradient(100deg,var(--blue-deep) 0%,var(--blue) 60%,#22468F 100%);
+  color:#fff;font-size:14.5px;padding:24px 0;
 }
-.foot-bottom .mono{font-family:var(--f-mono);font-size:12px}
+.foot-bottom .wrap{
+  display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;
+}
+.foot-bottom a{color:#fff}
+.foot-bottom a span{text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,.55)}
+.foot-bottom a:hover span{text-decoration-color:#fff;text-decoration-thickness:2px}
+@media(min-width:900px){
+  .foot-bottom{padding:30px 0}
+  .foot-bottom .wrap{display:grid;grid-template-columns:1fr auto 1fr;gap:0}
+  .foot-bottom .wrap > :first-child{justify-self:start;text-align:left}
+  .foot-bottom .wrap > :nth-child(2){padding:0 clamp(28px,5vw,110px);border-left:1px solid rgba(255,255,255,.4);border-right:1px solid rgba(255,255,255,.4)}
+}
+/* 3×3 dot cluster at the right edge — only where the gutter can hold it */
+@media(min-width:1280px){
+  .foot-bottom::after{
+    content:"";position:absolute;right:clamp(14px,1.6vw,40px);top:50%;transform:translateY(-50%);
+    width:66px;height:66px;opacity:.85;pointer-events:none;
+    background:radial-gradient(circle,#fff 3px,transparent 3.6px) 0 0/24px 24px;
+  }
+}
 
 /* ==========================================================================
    HOME — SHARED SECTION HEAD
